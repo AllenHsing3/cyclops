@@ -26,7 +26,7 @@ router.get('/', auth, async (req, res) => {
 // @desc     Authenticate user and get token
 // @access   Public
 router.post('/', [
-    check('email', 'Please enter valid email').isEmail(),
+    check('name', 'Please enter a username').exists(),
     check('password', 'Password is required').exists()
 ], async (req, res) => {
     const errors = validationResult(req)
@@ -34,10 +34,10 @@ router.post('/', [
         return res.status(400).json({ errors: errors.array() })
     }
 
-    const { email, password } = req.body; /// Destructure for easier variable use later
+    const { name, password } = req.body;
 
     try {
-        let user = await User.findOne({ email })
+        let user = await User.findOne({ name })
         if(!user){
            return res.status(400).json({ errors: [{ msg: 'Invalid credentials'}]})
         }

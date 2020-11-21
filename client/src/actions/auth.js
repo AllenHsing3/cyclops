@@ -36,14 +36,18 @@ export const loadUser = () => async (dispatch) => {
 
 //REGISTER USER
 
-export const register = ({ name, email, password }) => async (dispatch) => {
+export const register = ({ name, password }) => async (dispatch) => {
+  const regex = RegExp(/^[a-zA-Z0-9]*$/)
+  if(regex.test(name)=== false){
+    return dispatch(setAlert('Username cannot have spaces or special characters'))
+  }
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
 
-  const body = JSON.stringify({ name, email, password });
+  const body = JSON.stringify({ name, password });
 
   try {
     const res = await axios.post('/api/users', body, config);
@@ -67,14 +71,14 @@ export const register = ({ name, email, password }) => async (dispatch) => {
 
 //LOGIN USER
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (name, password) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
 
-  const body = JSON.stringify({ email, password });
+  const body = JSON.stringify({ name, password });
 
   try {
     const res = await axios.post('/api/auth', body, config);

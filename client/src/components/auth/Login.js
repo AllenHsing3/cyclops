@@ -7,17 +7,18 @@ import { login } from '../../actions/auth';
 
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
-        email: '',
+        name: '',
         password: ''
     })
 
-    const { email, password } = formData;
+    const { name, password } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
     const onSubmit = async e => {
         e.preventDefault()
-        login(email, password);
+        console.log(name)
+        login(name, password);
     }
 
     // To redirect if logged in
@@ -32,10 +33,10 @@ const Login = ({ login, isAuthenticated }) => {
       <form className="form" action="create-profile.html" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
           <input 
-          type="email" 
-          placeholder="Email Address" 
-          name="email"
-          value={email}
+          type="text" 
+          placeholder="Username" 
+          name="name"
+          value={name}
            onChange={e => onChange(e)}
            />
         </div>

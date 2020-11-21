@@ -13,7 +13,6 @@ const User = require('../../models/User')
 // @access   Public
 router.post('/', [
     check('name', 'Name is required').not().isEmpty(),  /// Make sure it isnt empty
-    check('email', 'Please enter valid email').isEmail(),
     check('password', 'Password must be a min of 6 characters').isLength({ min: 6 })
 ], async (req, res) => {
     const errors = validationResult(req)
@@ -21,10 +20,10 @@ router.post('/', [
         return res.status(400).json({ errors: errors.array() })
     }
 
-    const { name, email, password } = req.body; /// Destructure for easier variable use later
+    const { name, password } = req.body; /// Destructure for easier variable use later
 
     try {
-        let user = await User.findOne({ email })
+        let user = await User.findOne({ name })
         if(user){
            return res.status(400).json({ errors: [{ msg: 'User already exists'}]})
         }
@@ -37,7 +36,6 @@ router.post('/', [
 
         user = new User({
             name,
-            email,
             password,
             
         })

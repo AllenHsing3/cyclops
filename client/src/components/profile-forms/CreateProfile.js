@@ -69,7 +69,7 @@ const CreateProfile = ({ createProfile, uploadPhoto }) => {
         onSubmit={(e) => onSubmit(e)}
       >
         <div className="form-group">
-          <label className="btn btn-primary label" >
+          <label className="btn btn-primary label" for="photo">
             Choose a picture
           </label>
           <div>
