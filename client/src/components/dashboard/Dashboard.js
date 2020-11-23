@@ -9,7 +9,9 @@ import { Link } from "react-router-dom";
 import { deleteAccount } from "../../actions/profile";
 import WatchCard from "./WatchCard";
 import BlankCard from "./BlankCard";
-import blankAvatar from "./blankAvatar.jpg";
+import EditProfile from "../profile-forms/EditProfile";
+
+
 const Dashboard = ({
   getCurrentProfile,
   auth: { user },
@@ -19,15 +21,15 @@ const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
-  return loading && profile == null ? (
+  return loading && profile == null && profile === null? (
     <Spinner />
   ) : (
     <Fragment>
       <div className="main-container">
         <div>
         <img
-          src={user.avatar === null ? blankAvatar : blankAvatar}
-          style={{ width: "100px", margin: "auto", display: "block" }}
+          src={user.avatar}
+          style={{ width: "100px", margin: "auto", display: "block", borderRadius: '90px' }}
         ></img>
         <p className="lead">{user && user.name}</p>
         <p className="">{user.bio}</p>
@@ -52,7 +54,9 @@ const Dashboard = ({
             </Link>
           </Fragment>
         )}
+               
       </div>
+      <EditProfile />
     </Fragment>
   );
 };

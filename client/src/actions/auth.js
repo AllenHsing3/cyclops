@@ -9,6 +9,7 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_PROFILE,
+  SAVED_BIO,
 } from './types';
 
 import setAuthToken from '../utils/setAuthToken';
@@ -68,6 +69,29 @@ export const register = ({ name, password }) => async (dispatch) => {
     });
   }
 };
+
+//SAVE BIO
+
+export const saveBio = (bio) => async(dispatch) =>{
+  try {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    const body = JSON.stringify({bio:bio})
+    const res = await axios.post('/api/users/bio', body, config)
+    dispatch({
+      type: SAVED_BIO,
+      payload: res.data
+    })
+  } catch (err) {
+    console.error(err.message)
+  }
+}
 
 //LOGIN USER
 

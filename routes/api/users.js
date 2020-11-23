@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// const gravatar = require('gravatar')
+const auth = require('../../middleware/auth')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const config = require('config')
@@ -27,17 +27,11 @@ router.post('/', [
         if(user){
            return res.status(400).json({ errors: [{ msg: 'User already exists'}]})
         }
-        // Add in avatar
-        // const avatar = gravatar.url(email, {
-        //     s: '200',
-        //     r: 'pg',
-        //     d: 'mm'
-        // })
 
         user = new User({
             name,
             password,
-            
+            bio: null
         })
         // encrypt password
         const salt = await bcrypt.genSalt(10); // 10 is recomended in docs
@@ -64,5 +58,19 @@ router.post('/', [
         res.status(500).send('Server Error')
     }
 });
+
+// @route    Post api/users/bio
+// @desc     Register User
+// @access   Public
+router.post('/bio', auth, async(req, res) => {
+    try {
+        const user = await User.findById(req.user.id)
+        user.bio = req.body.bio
+        await user.save()
+        res.send(user)
+    } catch (err) {
+        console.error(err.message)
+    }
+})
 
 module.exports = router

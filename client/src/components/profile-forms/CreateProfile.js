@@ -46,7 +46,6 @@ const CreateProfile = ({ createProfile, uploadPhoto }) => {
     } catch (err) {
       console.error(err.message)
     }
-
   };
 
   const handleOnChange = (event) => {

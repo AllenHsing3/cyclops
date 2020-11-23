@@ -10,7 +10,8 @@ const UserSchema = new mongoose.Schema({
         required: true
     },
     avatar: {
-        type: String
+        type: String,
+        default: "https://slate.textile.io/ipfs/bafkreibjzokggw22mc27xurtqwkm7fvtw37ofblbqd7kuixsq65wjw3cem"
     },
     bio: {
         type: String

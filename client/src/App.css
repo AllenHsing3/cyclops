@@ -532,3 +532,17 @@ button {
   align-content: center;
   text-align: center;
 }
+
+.edit-container-closed {
+  position: fixed;
+  right:0px;
+  display: none;
+}
+
+.edit-container-open {
+  position: fixed;
+  right:0px;
+  width: 30vh;
+  height: 100vh;
+  background-color: crimson;
+}
