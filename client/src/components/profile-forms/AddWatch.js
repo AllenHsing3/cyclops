@@ -59,18 +59,17 @@ const AddWatch = ({ createProfile, uploadPhoto }) => {
 
   return (
     <Fragment>
-        <div >
+        <div className="edit-container-open">
       <h4 className="text">{message}</h4>
       <h3 className="lead text-primary">Add a watch to your watch box</h3>
       <img className="preview-photo" src={previewImg.file} alt="" />
       <form
         method="post"
         encType="multipart/form-data"
-        className="form"
         onSubmit={(e) => onSubmit(e)}
       >
-        <div className="form-group">
-          <label className="btn btn-primary label" for="photo">
+        <div >
+          <label for="photo">
             Choose a picture
           </label>
           <div>
@@ -83,7 +82,7 @@ const AddWatch = ({ createProfile, uploadPhoto }) => {
             />
           </div>
         </div>
-        <div className="form-group">
+        <div >
           <input
             type="text"
             placeholder="Name"
@@ -93,8 +92,8 @@ const AddWatch = ({ createProfile, uploadPhoto }) => {
             required
           />
         </div>
-        <div className="form-group">
-          <textarea
+        <div >
+          <input
             type="text"
             placeholder="Every piece has a story! Why did you aquire it? What do you like or dislike about it?"
             name="description"
@@ -103,10 +102,7 @@ const AddWatch = ({ createProfile, uploadPhoto }) => {
             required
           />
         </div>
-        <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="dashboard">
-          Go Back
-        </Link>
+        <button type="submit">Save</button>
       </form>
       </div>
     </Fragment>

@@ -7,7 +7,8 @@ import {
     LOGIN_FAIL,
     LOGOUT,
     ACCOUNT_DELETED,
-    SAVED_BIO
+    SAVED_BIO,
+    AVATAR_SAVED
 } from '../actions/types';
 
 const initialState = {
@@ -28,6 +29,7 @@ export default function(state = initialState, action) {
                 user: payload
             }
         case SAVED_BIO: 
+        case AVATAR_SAVED:
             return {
                 ...state,
                 user: {

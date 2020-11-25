@@ -1,5 +1,5 @@
 // useEffect needed to use the hooks
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import Spinner from "../layout/Spinner";
 import { connect } from "react-redux";
@@ -11,7 +11,6 @@ import WatchCard from "./WatchCard";
 import BlankCard from "./BlankCard";
 import EditProfile from "../profile-forms/EditProfile";
 
-
 const Dashboard = ({
   getCurrentProfile,
   auth: { user },
@@ -21,42 +20,65 @@ const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
-  return loading && profile == null && profile === null? (
+  // Set up bio edit pane on click
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
+  const [displayForm, toggleDisplayForm] = useState(false);
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          toggleDisplayForm(false);
+        }
+      }
+
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  return loading && profile == null && profile === null ? (
     <Spinner />
   ) : (
     <Fragment>
       <div className="main-container">
-        <div>
-        <img
-          src={user.avatar}
-          style={{ width: "100px", margin: "auto", display: "block", borderRadius: '90px' }}
-        ></img>
-        <p className="lead">{user && user.name}</p>
-        <p className="">{user.bio}</p>
+        <div
+          className="bio-container"
+          onClick={() => toggleDisplayForm(true)}
+          ref={wrapperRef}
+        >
+          {displayForm && <EditProfile />}
+          <img
+            src={user && user.avatar}
+            style={{
+              width: "100px",
+              margin: "auto",
+              display: "block",
+              borderRadius: "90px",
+            }}
+          ></img>
+          <p className="">{user && user.name}</p>
+          <p>{user.bio}</p>
         </div>
         {profile !== null ? (
-          <Fragment>
-            {/* <Link to="/create-profile" className="btn btn-primary my-1">
-            Add a watch to your box
-          </Link> */}
+
             <div className="profile-container">
               {profile.watchBox.map((watch) => (
                 <WatchCard watch={watch} />
               ))}
               <BlankCard />
             </div>
-          </Fragment>
+ 
         ) : (
           <Fragment>
-            <p>Let's add your first watch into your watch box!</p>
-            <Link to="/create-profile" className="btn btn-primary my-1">
-              Add a watch
-            </Link>
+            <BlankCard />
           </Fragment>
         )}
-               
       </div>
-      <EditProfile />
     </Fragment>
   );
 };

@@ -362,13 +362,7 @@ button {
 
 /* Profile Page */
 
-.profile-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  text-align: center;
-}
+
 
 .profile-img {
   max-width:300px;
@@ -533,16 +527,51 @@ button {
   text-align: center;
 }
 
-.edit-container-closed {
-  position: fixed;
-  right:0px;
-  display: none;
+.profile-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.bio-container{
+  width: 30vh;
+  margin: auto;
+  margin-bottom: 5vh;
 }
 
 .edit-container-open {
-  position: fixed;
+  position: absolute;
   right:0px;
-  width: 30vh;
+  top: 0px;
+  width: 40vh;
   height: 100vh;
   background-color: crimson;
 }
+
+input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: blue
+}
+input:focus {
+  border-color: green
+}
+
+.wrapper {
+  width:150px;
+  height:150px;
+  margin: 25px auto;
+  overflow: hidden;
+  border-radius:50%;
+  position: relative;
+}
+
+.wrapper img {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%)
+}
+

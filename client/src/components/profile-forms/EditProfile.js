@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { saveBio } from "../../actions/auth";
-const EditProfile = ({ user, saveBio, profile: { loading } }) => {
+import {uploadPhoto, updateAvatar} from '../../actions/profile'
+ 
+
+const EditProfile = ({ user, uploadPhoto, updateAvatar, saveBio, profile: { loading } }) => {
   const [bio, setBio] = useState(user.bio);
   const [photo, setPhoto] = useState(null);
 
@@ -20,6 +23,7 @@ const EditProfile = ({ user, saveBio, profile: { loading } }) => {
     try {
       if (photo === null) {
         //   setMessage('You need to upload a picture first...');
+        console.log('A')
         return;
       }
       const regex = RegExp(/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i);
@@ -29,20 +33,27 @@ const EditProfile = ({ user, saveBio, profile: { loading } }) => {
       } else if (!regex.test(photo.name)) {
         //   setMessage('File is not an image...');
       } else if (photo) {
-        //   const photoURL = await uploadPhoto(photo);
-        //   formData.url = photoURL
-        //   await createProfile(formData);
+          const photoURL = await uploadPhoto(photo);
+          const formData = {url:photoURL}
+          formData.url = photoURL
+          await updateAvatar(formData);
       }
     } catch (err) {
       console.error(err.message);
     }
   };
-  const handleOnChange = (event) => {
-    const file = event.target.files[0];
-    setPhoto(file);
-    //   setPreviewImg({
-    //     file: URL.createObjectURL(file),
-    //   });
+
+  const handleOnChange = async(event) => {
+    try {
+        const file = event.target.files[0];
+        setPhoto(file);
+        const photoURL = await uploadPhoto(photo);
+        const formData = {url: ""}
+        formData.url = photoURL
+        await updateAvatar(formData);
+    } catch (err) {
+        console.error(err.message)
+    }
   };
 
   return (
@@ -58,10 +69,13 @@ const EditProfile = ({ user, saveBio, profile: { loading } }) => {
             <img
               src={user.avatar}
               style={{
-                width: "100px",
+                verticalAlign: "middle",
+                width: "50px",
+                height: "50px",
+                borderRadius: "50%",
+                objectFit: "cover",
                 margin: "auto",
                 display: "block",
-                borderRadius: "90px",
               }}
             ></img>
           </label>
@@ -95,6 +109,8 @@ EditProfile.propTypes = {
   user: PropTypes.object.isRequired,
   saveBio: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
+  uploadPhoto: PropTypes.func.isRequired,
+  updateAvatar: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -102,4 +118,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { saveBio })(EditProfile);
+export default connect(mapStateToProps, { saveBio, uploadPhoto, updateAvatar })(EditProfile);

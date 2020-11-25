@@ -61,11 +61,25 @@ router.post('/', [
 
 // @route    Post api/users/bio
 // @desc     Register User
-// @access   Public
+// @access   Private
 router.post('/bio', auth, async(req, res) => {
     try {
         const user = await User.findById(req.user.id)
         user.bio = req.body.bio
+        await user.save()
+        res.send(user)
+    } catch (err) {
+        console.error(err.message)
+    }
+})
+
+// @route    Post api/users/avatar
+// @desc     Update User Avatar
+// @access   Private
+router.post('/avatar', auth, async(req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('-password')
+        user.avatar = req.body.url
         await user.save()
         res.send(user)
     } catch (err) {

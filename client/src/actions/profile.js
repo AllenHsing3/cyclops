@@ -7,6 +7,7 @@ import {
   CLEAR_PROFILE,
   ACCOUNT_DELETED,
   GET_PROFILES,
+  AVATAR_SAVED,
 } from './types';
 
 // Get user's profile
@@ -135,4 +136,36 @@ export const uploadPhoto = (photo) => {
       console.error(err.message);
     }
   };
+};
+
+// Upload Avatar
+export const updateAvatar = (formData, edit = true) => async (
+  dispatch
+) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const res = await axios.post('/api/users/avatar', formData, config);
+
+    dispatch({
+      type: AVATAR_SAVED,
+      payload: res.data,
+    });
+    dispatch(setAlert(edit ? 'Profile Edited' : 'Profile Created', 'success'));
+
+
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
 };
