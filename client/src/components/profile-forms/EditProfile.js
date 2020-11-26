@@ -99,7 +99,7 @@ const EditProfile = ({ user, uploadPhoto, updateAvatar, saveBio, profile: { load
           name="bio"
           placeholder="A short desciption of who you are..."
         />
-        <button type="submit">Save</button>
+        <button className='save-btn' type="submit">Save</button>
       </form>
     </div>
   );

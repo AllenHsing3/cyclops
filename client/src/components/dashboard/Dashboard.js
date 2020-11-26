@@ -1,4 +1,3 @@
-// useEffect needed to use the hooks
 import React, { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import Spinner from "../layout/Spinner";
@@ -24,11 +23,13 @@ const Dashboard = ({
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
   const [displayForm, toggleDisplayForm] = useState(false);
+  const [blur, toggleBlur] = useState("");
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
           toggleDisplayForm(false);
+          // document.body.style.filter = 'blur(0px)'
         }
       }
 
@@ -48,7 +49,9 @@ const Dashboard = ({
       <div className="main-container">
         <div
           className="bio-container"
-          onClick={() => toggleDisplayForm(true)}
+          onClick={function () {
+            toggleDisplayForm(true);
+          }}
           ref={wrapperRef}
         >
           {displayForm && <EditProfile />}
@@ -65,14 +68,12 @@ const Dashboard = ({
           <p>{user.bio}</p>
         </div>
         {profile !== null ? (
-
-            <div className="profile-container">
-              {profile.watchBox.map((watch) => (
-                <WatchCard watch={watch} />
-              ))}
-              <BlankCard />
-            </div>
- 
+          <div className="profile-container">
+            {profile.watchBox.map((watch) => (
+              <WatchCard watch={watch} />
+            ))}
+            <BlankCard />
+          </div>
         ) : (
           <Fragment>
             <BlankCard />
@@ -83,7 +84,6 @@ const Dashboard = ({
   );
 };
 
-// Pull the profile state and other needed props
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
