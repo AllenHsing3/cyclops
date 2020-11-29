@@ -51,6 +51,7 @@ const Dashboard = ({
           className="bio-container"
           onClick={function () {
             toggleDisplayForm(true);
+
           }}
           ref={wrapperRef}
         >
@@ -58,14 +59,15 @@ const Dashboard = ({
           <img
             src={user && user.avatar}
             style={{
-              width: "100px",
+              width: "8vh",
+              height : "8vh",
               margin: "auto",
               display: "block",
               borderRadius: "90px",
             }}
           ></img>
-          <p className="">{user && user.name}</p>
-          <p>{user.bio}</p>
+          <p className="text-primary" style={{marginTop:"1vh"}}>{user && user.name}</p>
+          <p className="text-secondary">{user.bio}</p>
         </div>
         {profile !== null ? (
           <div className="profile-container">

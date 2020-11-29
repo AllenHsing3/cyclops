@@ -17,8 +17,8 @@ const Landing = ({ isAuthenticated }) => {
               Get a closer look into the wristwatch community
             </p> */}
             <div className="buttons">
-              <Link to="/register" className="btn btn-primary">Sign Up</Link>
-              <Link to="/login" className="btn btn-light">Login</Link>
+              <Link to="/register" className="btn btn-primary btn-pill">Sign Up</Link>
+              <Link to="/login" className="btn btn-light btn-pill">Login</Link>
             </div>
           </div>
         </div>

@@ -6,11 +6,11 @@ const WatchCard = ({ watch }) => {
   const { _id, name, url } = watch;
 
   return (
-    <div>
+    <div className="watch-card">
       <Link to={`/watch/` + _id}>
       <img className='profile-img' src={url} alt="Watch in Box" />
       </Link>
-      <p>{name}</p>
+      <p className="text-primary" style={{textAlign:"left"}}>{name}</p>
     </div>
   );
 };

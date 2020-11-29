@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+import logo from '../../img/logo.png'
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
-    <ul>
-      <li>
+    <ul style={{position:"absolute", right:'15px'}}>
+      {/* <li>
         <Link to="/profiles">
         Friends
         </Link>
@@ -16,11 +17,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Link to="/posts">
         Forum
         </Link>
-      </li>
+      </li> */}
       <li>
         <a href="#!" onClick={logout}>
           <i className="fas fa-sign-out-alt"></i>{' '}
-          <span className="hide-sm">Logout</span>
+          <span className="hide-sm"></span>
         </a>
       </li>
     </ul>
@@ -28,25 +29,25 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   const guestLinks = (
     <ul>
-      <li>
+      {/* <li>
         <Link to="/profiles">
         PlaceholderHere
         </Link>
-      </li>
-      <li>
+      </li> */}
+      {/* <li>
         <Link to="/register">Register</Link>
       </li>
       <li>
         <Link to="/login">Login</Link>
-      </li>
+      </li> */}
     </ul>
   );
 
   return (
-    <nav className="navbar bg-dark">
+    <nav className="navbar ">
       <h1>
         <Link to="/">
-          <i className="fas fa-code"></i> Cyclops
+          <img style={{width:"8vh", height:"auto", position:"absolute", left:'-2px' }} src={logo}></img>
         </Link>
       </h1>
       {!loading && (
