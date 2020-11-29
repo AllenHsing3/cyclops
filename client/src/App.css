@@ -7,7 +7,6 @@
   --success-color: #28a745;
 }
 
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,9 +14,9 @@
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1rem;
-  
+
   line-height: 1.6;
   background-color: #222222;
   color: #333;
@@ -244,8 +243,8 @@ img {
   margin: 1.2rem 0;
 }
 
-.auth-form{
-  position:absolute;
+.auth-form {
+  position: absolute;
   margin-left: 50vh;
   margin-top: 30vh;
   width: 40vh;
@@ -257,10 +256,10 @@ img {
   color: #888;
 }
 
-.form input[type='text'],
-.form input[type='email'],
-.form input[type='password'],
-.form input[type='date'],
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"],
+.form input[type="date"],
 .form select,
 .form textarea {
   display: block;
@@ -270,7 +269,7 @@ img {
   border: 1px solid #ccc;
 }
 
-.form input[type='submit'],
+.form input[type="submit"],
 button {
   font: inherit;
 }
@@ -320,7 +319,7 @@ button {
   z-index: 1;
   width: 100%;
   top: 0;
-  opacity: .9;
+  opacity: 0.9;
 }
 
 .navbar ul {
@@ -344,7 +343,7 @@ button {
 /* Landing Page */
 .landing {
   position: relative;
-  background: url('./img/logo.png') no-repeat center center/cover;
+  background: url("./img/logo.png") no-repeat center center/cover;
   height: 100vh;
 }
 
@@ -358,6 +357,11 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.auth {
+  position: relative;
+  height: 100vh;
 }
 
 /* Profiles Page */
@@ -377,16 +381,15 @@ button {
 
 /* Profile Page */
 
-.profile-img-wrapper{
+.profile-img-wrapper {
   width: 300px;
   height: 600px;
 }
 .profile-img {
-  width:500px;
+  width: 500px;
   height: auto;
   margin: auto;
 }
-
 
 /* Posts Page */
 .post-form .post-form-header {
@@ -423,8 +426,6 @@ button {
   margin-bottom: 0.5rem;
 }
 
-
-
 .preview-photo {
   max-width: 30vh;
   height: auto;
@@ -439,19 +440,22 @@ button {
 }
 
 .blank-card {
-  width: 25vh;
-  height:25vh;
+  width: 15vh;
+  height: auto;
   margin: auto;
-  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background-color: 222222;
 }
-
 
 #photo {
   opacity: 0;
 }
 
 .label {
-  align-self:center;
+  align-self: center;
 }
 
 .btn-pill {
@@ -473,7 +477,6 @@ button {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-content: center;
   text-align: center;
 }
 
@@ -482,26 +485,29 @@ button {
   align-items: center;
   flex-wrap: wrap;
   text-align: center;
-  justify-content: center;
-  align-self:center;
+  align-self: center;
   max-width: 80vh;
 }
 
 .watch-card {
-  margin-left:.7vh;
-  margin-right:.7vh;
+  margin-left: 0.7vh;
+  margin-right: 0.7vh;
 }
 
-.bio-container{
+.plus-button {
+  margin-left: 6vh;
+}
+
+.bio-container {
   width: 30vh;
   margin: auto;
   margin-bottom: 7vh;
-  margin-top:3vh;
+  margin-top: 3vh;
 }
 
 .edit-container-open {
   position: absolute;
-  right:0px;
+  right: 0px;
   top: 0px;
   width: 40vh;
   height: 100vh;
@@ -517,33 +523,31 @@ button {
 }
 
 .bio-desc-form {
-  background-color: #0077b5;
   margin-top: 5vh;
   display: flex;
   flex-direction: column;
-  height: fit-content;  
+  height: fit-content;
 }
-.save-btn{
+.save-btn {
   border-radius: 90px;
 }
 
-
 .wrapper {
-  width:150px;
-  height:150px;
+  width: 150px;
+  height: 150px;
   margin: 25px auto;
   overflow: hidden;
-  border-radius:50%;
+  border-radius: 50%;
   position: relative;
 }
 
 .wrapper img {
   position: absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%)
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.blur{
-  filter: blur(.2rem);
+.blur {
+  filter: blur(0.2rem);
 }

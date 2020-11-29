@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { saveBio } from "../../actions/auth";
 import { uploadPhoto, updateAvatar } from "../../actions/profile";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+
+
 
 const EditProfile = ({
   user,
@@ -25,38 +27,37 @@ const EditProfile = ({
     setBio(e.target.value);
   };
   //   SET AND SUBMIT PROFILE PHOTO
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      if (photo === null) {
-        //   setMessage('You need to upload a picture first...');
-        console.log("A");
-        return;
-      }
-      const regex = RegExp(/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i);
-      if (photo.size > 8000000) {
-        //   setMessage('File is too large! Try something smaller');
-        //   setTimeout(messageReset, 3000);
-      } else if (!regex.test(photo.name)) {
-        //   setMessage('File is not an image...');
-      } else if (photo) {
-        const photoURL = await uploadPhoto(photo);
-        const formData = { url: photoURL };
-        formData.url = photoURL;
-        await updateAvatar(formData);
-      }
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     if (photo === null) {
+  //       //   setMessage('You need to upload a picture first...');
+  //       console.log("A");
+  //       return;
+  //     }
+  //     const regex = RegExp(/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i);
+  //     if (photo.size > 8000000) {
+  //       //   setMessage('File is too large! Try something smaller');
+  //       //   setTimeout(messageReset, 3000);
+  //     } else if (!regex.test(photo.name)) {
+  //       //   setMessage('File is not an image...');
+  //     } else if (photo) {
+  //       const photoURL = await uploadPhoto(photo);
+  //       const formData = { url: photoURL };
+  //       formData.url = photoURL;
+  //       await updateAvatar(formData);
+  //     }
+  //   } catch (err) {
+  //     console.error(err.message);
+  //   }
+  // };
 
   const handleOnChange = async (event) => {
     try {
       const file = event.target.files[0];
       setPhoto(file);
-      const photoURL = await uploadPhoto(photo);
-      const formData = { url: "" };
-      formData.url = photoURL;
+      const photoURL = await uploadPhoto(file);
+      const formData = { url: photoURL };
       await updateAvatar(formData);
     } catch (err) {
       console.error(err.message);
@@ -66,67 +67,67 @@ const EditProfile = ({
   return (
     <div className="edit-container-open">
       <div>
-      <form
-        method="post"
-        encType="multipart/form-data"
-        className="bio-image-form"
-        onSubmit={(e) => onSubmit(e)}
-      >
-        <div>
-          <label className="" for="photo">
-            <img
-              src={user.avatar}
-              style={{
-                verticalAlign: "middle",
-                maxWidth: "30vh",
-                height: "30vh",
-                borderRadius: "50%",
-                objectFit: "cover",
-                margin: "auto",
-                display: "block",
-                marginTop: "10vh",
-              }}
-            ></img>
-          </label>
+        <form
+          method="post"
+          encType="multipart/form-data"
+          className="bio-image-form"
+        >
           <div>
-            <input
-              id="photo"
-              type="file"
-              name="photo"
-              onChange={handleOnChange}
-              required
-            />
+            <label className="" for="photo">
+              <img
+                src={user.avatar}
+                style={{
+                  verticalAlign: "middle",
+                  maxWidth: "30vh",
+                  height: "30vh",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  margin: "auto",
+                  display: "block",
+                  marginTop: "10vh",
+                }}
+              ></img>
+            </label>
+            <div>
+              <input
+                id="photo"
+                type="file"
+                name="photo"
+                onChange={handleOnChange}
+                required
+              />
+            </div>
           </div>
-        </div>
-
-      </form>
+        </form>
       </div>
       <div className="bio-desc-form">
         <form onSubmit={(e) => handleSubmit(e)}>
           <TextField
-            type="text"
             onChange={(e) => onChange(e)}
             value={bio}
             name="bio"
-            style={{width: "30vh",}}
+            multiline
+            rows={4}
+            label="Bio"
+            style={{ width: "30vh" }}
             placeholder="A short desciption of who you are..."
+            color="primary"
           />
           <div>
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: "grey",
-              borderRadius: "90px",
-              width: "30vh",
-
-            }}
-            type="submit"
-          >
-            Save
-          </Button>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "grey",
+                borderRadius: "90px",
+                width: "30vh",
+              }}
+              type="submit"
+            >
+              Save
+            </Button>
           </div>
         </form>
-        </div>
+      </div>
     </div>
   );
 };

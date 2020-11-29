@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
 import TextField from "@material-ui/core/TextField";
 
-
-
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -31,40 +29,46 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <div className="auth-form">
-      <h1 className="large text-primary">Sign In</h1>
-      <p className="lead">
-      </p>
-      <form
-        className="form"
-        action="create-profile.html"
-        onSubmit={(e) => onSubmit(e)}
-      >
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Username"
-            name="name"
-            value={name}
-            onChange={(e) => onChange(e)}
-          />
+      <section className="auth">
+        <div className="landing-inner">
+          <div style={{ marginBottom: "20vh" }}>
+            <h1 className="large text-primary">Sign In</h1>
+            <p className="lead"></p>
+            <form
+              className="form"
+              action="create-profile.html"
+              onSubmit={(e) => onSubmit(e)}
+            >
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Username"
+                  name="name"
+                  value={name}
+                  onChange={(e) => onChange(e)}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  minLength="6"
+                  value={password}
+                  onChange={(e) => onChange(e)}
+                />
+              </div>
+              <input type="submit" className="btn  btn-pill" value="Login" />
+            </form>
+            <p className="text-secondary" style={{ marginTop: "10px" }}>
+              Don't have have an account?{" "}
+              <Link className="text-primary" to="/register">
+                Sign Up
+              </Link>
+            </p>
+          </div>
         </div>
-        <div className="form-group">
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            minLength="6"
-            value={password}
-            onChange={(e) => onChange(e)}
-          />
-        </div>
-        <input type="submit" className="btn  btn-pill" value="Login" />
-      </form>
-      <p className="text-secondary" style={{marginTop:'10px'}}>
-        Don't have have an account? <Link className="text-primary" to="/register">Sign Up</Link>
-      </p>
-      </div>
+      </section>
     </Fragment>
   );
 };
