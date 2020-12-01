@@ -19,6 +19,10 @@ const UserSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    watchCount:{
+        type: mongoose.Schema.Types.ObjectId, ///Create a reference to the user ID
+        ref: "profile",
     }
 })
 

@@ -100,8 +100,9 @@ const EditProfile = ({
           </div>
         </form>
       </div>
-      <div className="bio-desc-form">
-        <form onSubmit={(e) => handleSubmit(e)}>
+      <div >
+        <form className="bio-desc-form" onSubmit={(e) => handleSubmit(e)}>
+          <div>
           <TextField
             onChange={(e) => onChange(e)}
             value={bio}
@@ -113,6 +114,7 @@ const EditProfile = ({
             placeholder="A short desciption of who you are..."
             color="primary"
           />
+          </div>
           <div>
             <Button
               variant="contained"
@@ -120,6 +122,7 @@ const EditProfile = ({
                 backgroundColor: "grey",
                 borderRadius: "90px",
                 width: "30vh",
+                marginTop:'2vh'
               }}
               type="submit"
             >

@@ -51,22 +51,27 @@ const Dashboard = ({
           className="bio-container"
           onClick={function () {
             toggleDisplayForm(true);
-
           }}
           ref={wrapperRef}
         >
           {displayForm && <EditProfile />}
-          <img
-            src={user && user.avatar}
-            style={{
-              width: "8vh",
-              height : "8vh",
-              margin: "auto",
-              display: "block",
-              borderRadius: "90px",
-            }}
-          ></img>
-          <p className="text-primary" style={{marginTop:"1vh"}}>{user && user.name}</p>
+          <div>
+            <img
+              src={user && user.avatar}
+              style={{
+                verticalAlign: "middle",
+                maxWidth: "8vh",
+                height: "8vh",
+                borderRadius: "50%",
+                objectFit: "cover",
+                margin: "auto",
+                display: "block",
+              }}
+            ></img>
+          </div>
+          <p className="text-primary" style={{ marginTop: "1vh" }}>
+            {user && user.name}
+          </p>
           <p className="text-secondary">{user.bio}</p>
         </div>
         {profile !== null ? (
@@ -74,6 +79,7 @@ const Dashboard = ({
             {profile.watchBox.map((watch) => (
               <WatchCard watch={watch} />
             ))}
+
             <BlankCard />
           </div>
         ) : (

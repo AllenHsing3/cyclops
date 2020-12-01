@@ -41,8 +41,8 @@ img {
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
-  margin-top: 6rem;
-  margin-bottom: 3rem;
+  /* margin-top: 6rem; */
+  /* margin-bottom: 3rem; */
 }
 
 /* Text Styles*/
@@ -388,7 +388,6 @@ button {
 .profile-img {
   width: 500px;
   height: auto;
-  margin: auto;
 }
 
 /* Posts Page */
@@ -433,7 +432,7 @@ button {
 }
 
 .profile-img {
-  max-width: 25vh;
+  max-width: 30vh;
   height: auto;
   margin: auto;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
@@ -486,34 +485,37 @@ button {
   flex-wrap: wrap;
   text-align: center;
   align-self: center;
-  max-width: 80vh;
+  max-width: 96vh;
+  justify-content: center;
 }
 
 .watch-card {
-  margin-left: 0.7vh;
-  margin-right: 0.7vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  width: 30vh;
+  height: auto;
 }
 
-.plus-button {
-  margin-left: 6vh;
-}
 
 .bio-container {
   width: 30vh;
   margin: auto;
   margin-bottom: 7vh;
-  margin-top: 3vh;
+  margin-top: 9vh;
 }
 
 .edit-container-open {
-  position: absolute;
+  position: fixed;
   right: 0px;
   top: 0px;
   width: 40vh;
   height: 100vh;
   background-color: #222222;
-  display: flex;
-  flex-direction: column;
+}
+
+.add-watch-form{
+  margin-top: 15vh;
+
 }
 
 .bio-image-form {
@@ -551,3 +553,13 @@ button {
 .blur {
   filter: blur(0.2rem);
 }
+
+.view-watch {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display:flex;
+  background-color: #0077b5;
+}
+

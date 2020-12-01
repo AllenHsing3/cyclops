@@ -7,7 +7,7 @@ const Landing = ({ isAuthenticated }) => {
   if(isAuthenticated) {
     return <Redirect to='/dashboard' />
   }
-  document.body.style.overflow = "hidden"
+  // document.body.style.overflow = "hidden"
     return(
         <section className="landing">
         <div className="dark-overlay">

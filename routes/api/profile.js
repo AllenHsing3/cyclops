@@ -49,6 +49,7 @@ router.post('/', [auth, [
         
         if(profile){
             profile.watchBox.push(req.body)
+            profile.watchCount = profile.watchBox.length
             await profile.save()
             return res.json(profile);
         }
@@ -56,6 +57,7 @@ router.post('/', [auth, [
         profile = new Profile();
         profile.user = req.user.id
         profile.watchBox.push(req.body)
+        profile.watchCount = profile.watchBox.length
         await profile.save();
         res.json(profile)
 
