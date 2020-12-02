@@ -1,13 +1,13 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { logout } from '../../actions/auth';
-import logo from '../../img/logo.png'
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logout } from "../../actions/auth";
+import logo from "../../img/logo.png";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
-    <ul style={{position:"absolute", right:'15px'}}>
+    <ul style={{ position: "absolute", right: "15px" }}>
       {/* <li>
         <Link to="/profiles">
         Friends
@@ -20,7 +20,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li> */}
       <li>
         <a href="#!" onClick={logout}>
-          <i className="fas fa-sign-out-alt"></i>{' '}
+          <i className="fas fa-sign-out-alt"></i>{" "}
           <span className="hide-sm"></span>
         </a>
       </li>
@@ -47,7 +47,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <nav className="navbar ">
       <h1>
         <Link to="/">
-          <img style={{width:"8vh", height:"auto", position:"absolute", left:'-2px' }} src={logo}></img>
+          <img style={{width:"10vh", height:"auto", position:"absolute", left:'-2px' }} src={logo}></img>
         </Link>
       </h1>
       {!loading && (
@@ -60,12 +60,10 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-}
+};
 
-const mapStateToProps = state => ({
-  auth: state.auth
-})
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 
-export default connect(mapStateToProps, { logout }) (Navbar)
-
-
+export default connect(mapStateToProps, { logout })(Navbar);

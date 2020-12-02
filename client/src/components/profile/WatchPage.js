@@ -20,25 +20,30 @@ const WatchPage = ({ watch, user, watchCount }) => {
             height: "auto",
             margin: "auto",
             marginTop: "3vh",
+            marginLeft:"4vh",
+            marginRight:"4vh"
           }}
         >
-          <div style={{ display: "flex",            marginBottom: "2vh" }}>
+          <div style={{ display: "flex", marginBottom: "2vh" }}>
             <img
               src={user && user.avatar}
               style={{
                 width: "5vh",
                 height: "5vh",
-                marginRight:"2vh",
+                marginRight: "2vh",
                 borderRadius: "90px",
               }}
             ></img>
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", flexDirection: "column",}}>
               <p className="text-primary">{user.name}</p>
               <p className="text-secondary">{watchCount} watches</p>
             </div>
             <p></p>
           </div>
-          <p className="text-primary" style={{ textAlign: "left", fontSize:"2rem" }}>
+          <p
+            className="text-primary"
+            style={{ textAlign: "left", fontSize: "2rem" }}
+          >
             {name}
           </p>
           <p className="text-secondary" style={{ textAlign: "left" }}>
