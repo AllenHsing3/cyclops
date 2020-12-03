@@ -85,6 +85,7 @@ const EditProfile = ({
                   margin: "auto",
                   display: "block",
                   marginTop: "10vh",
+                  marginRight:"2vh"
                 }}
               ></img>
             </label>

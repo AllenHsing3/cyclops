@@ -75,14 +75,11 @@ const AddWatch = ({ createProfile, uploadPhoto }) => {
                   alt=""
                   style={{
                     verticalAlign: "middle",
-                    maxWidth: "30vh",
-                    height: "30vh",
+                    maxWidth: "25vh",
+                    height: "25vh",
                     borderRadius: "50%",
+                    marginLeft: "2vh",
                     objectFit: "cover",
-                    margin: "auto",
-                    display: "block",
-                    marginTop: "10vh",
-                    marginLeft: "5vh",
                     backgroundColor: "black",
                   }}
                 />

@@ -29,7 +29,6 @@ const Dashboard = ({
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
           toggleDisplayForm(false);
-          // document.body.style.filter = 'blur(0px)'
         }
       }
 

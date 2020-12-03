@@ -16,7 +16,7 @@ const WatchCard = ({ watch }) => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
           toggleDisplayForm(false);
-          // document.body.style.filter = 'blur(0px)'
+          // document.body.classList.remove('blur')
         }
       }
 
@@ -29,6 +29,7 @@ const WatchCard = ({ watch }) => {
     }, [ref]);
   }
   return (
+    <div style={{width:"31vh", height:"45vh"}}>
     <div
       className="watch-card"
       onClick={function () {
@@ -41,6 +42,7 @@ const WatchCard = ({ watch }) => {
         {name}
       </p>
       {displayForm && <WatchPage watch={watch} />}
+    </div>
     </div>
   );
 };

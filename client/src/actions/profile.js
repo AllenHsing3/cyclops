@@ -32,10 +32,15 @@ export const getProfiles = () => async (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
   try {
     const res = await axios.get('/api/profile');
+    // Sort randomly
+    function sortFunc(a,b) {
+      return 0.5 - Math.random()
+    }
+    const sortedProfiles = res.data.sort(sortFunc)
 
     dispatch({
       type: GET_PROFILES,
-      payload: res.data,
+      payload: sortedProfiles,
     });
   } catch (err) {
     dispatch({

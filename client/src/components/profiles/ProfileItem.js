@@ -1,26 +1,34 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const ProfileItem = ({
   profile: {
-    user: { _id, name, avatar },
-    status,
-    company,
-    location,
-    skills,
+    user: { _id, name, bio, avatar },
+    watchCount,
   },
 }) => {
+  
   return (
-    <div className="profile bg-light">
-      <img src={avatar} className="round-img" alt='avatar' />
+    <div className="profile">
+      <img src={avatar} className="round-img" alt="avatar"               style={{
+                verticalAlign: "middle",
+                maxWidth: "15vh",
+                height: "15vh",
+                borderRadius: "50%",
+                objectFit: "cover",
+                margin: "auto",
+                display: "block",
+              }}/>
+      <div style={{width:"30vh",}}>
+        <p className="text-primary">{name}</p>
+        <p className="text-secondary" style={{fontSize:".9rem"}}>{watchCount===1? watchCount + " watch" : watchCount + " watches"}</p>
+        <p className="text-secondary">{bio.length <= 100 ? bio : bio.slice(0,100) + "..."}</p>
+      </div>
       <div>
-        <h2>{name}</h2>
-        <p>
-          {status} {company && <span> at {company}</span>}
-        </p>
-        <p className="my-2">{location && <span>{location}</span>}</p>
-        <Link to={`/profile/${_id}`} className='btn btn-primary'>View Profile</Link>
+      <Link to={`/profile/${_id}`} className="btn  btn-pill">
+          View Profile
+        </Link>
       </div>
       {/* <ul>
           {skills.splice(0,4).map((skill, index) => (

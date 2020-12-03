@@ -4,13 +4,18 @@ import { connect } from "react-redux";
 
 const WatchPage = ({ watch, user, watchCount }) => {
   const { _id, name, url, description } = watch;
+  // document.body.classList.add('blur')
+
+  
   return (
     <div className="view-watch">
-      <img
-        src={url}
-        alt="Image of watch"
-        style={{ maxWidth: "50vh", height: "auto" }}
-      />
+      <div>
+        <img
+          src={url}
+          alt="Image of watch"
+          style={{ width: "52vh", height: "auto", }}
+        />
+      </div>
       <div
         style={{ width: "40vh", height: "auto", backgroundColor: "#222222" }}
       >
@@ -20,8 +25,8 @@ const WatchPage = ({ watch, user, watchCount }) => {
             height: "auto",
             margin: "auto",
             marginTop: "3vh",
-            marginLeft:"4vh",
-            marginRight:"4vh"
+            marginLeft: "4vh",
+            marginRight: "4vh",
           }}
         >
           <div style={{ display: "flex", marginBottom: "2vh" }}>
@@ -34,7 +39,13 @@ const WatchPage = ({ watch, user, watchCount }) => {
                 borderRadius: "90px",
               }}
             ></img>
-            <div style={{ display: "flex", flexDirection: "column",}}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "left",
+              }}
+            >
               <p className="text-primary">{user.name}</p>
               <p className="text-secondary">{watchCount} watches</p>
             </div>

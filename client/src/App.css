@@ -365,18 +365,10 @@ button {
 }
 
 /* Profiles Page */
-.profile {
-  display: grid;
-  grid-template-columns: 2fr 4fr 2fr;
-  align-items: center;
-  grid-gap: 2rem;
-  padding: 1rem;
-  line-height: 1.8;
-  margin-bottom: 1rem;
-}
+
 
 .buttons {
-  margin-top: 40vh;
+  margin-top: 50vh;
 }
 
 /* Profile Page */
@@ -560,6 +552,35 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
   display:flex;
-  background-color: #0077b5;
+}
+/* Browse */
+.browse-container{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  align-self: center;
+  max-width: 98vh;
+  margin-top: 12vh;
 }
 
+.profile {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 2vh;
+}
+
+/* body :not(#unblurred) { 
+  -webkit-filter: blur(3px); 
+  -moz-filter: blur(3px); 
+  -o-filter: blur(3px); 
+  -ms-filter: blur(3px); 
+  filter: blur(3px); 
+} 
+#unblurred #box {
+  background:yellow; 
+  border:2px solid black; 
+  filter: blur(0px);
+} */
