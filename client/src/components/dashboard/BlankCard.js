@@ -23,6 +23,11 @@ const BlankCard = () => {
       };
     }, [ref]);
   }
+
+  const closeForm = (submitSuccessful) => {
+    toggleDisplayForm(submitSuccessful)
+  }
+
   return (
     <div
       className="watch-card"
@@ -30,7 +35,7 @@ const BlankCard = () => {
       ref={wrapperRef}
       style={{width:"31vh", height:"45vh", display:"flex", alignContent:"center"}}
     >
-      {displayForm && <AddWatch />}
+      {displayForm && <AddWatch submitted={closeForm} />}
       <div className='profile-img'>
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -27,7 +27,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/user/dashboard" />;
   }
 
   return (
@@ -75,7 +75,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             </form>
             <p className="text-secondary" style={{ marginTop: "10px" }}>
               Already have an account?{" "}
-              <Link className="text-primary" to="/login">
+              <Link className="text-primary" to="/user/login">
                 Sign In
               </Link>
             </p>

@@ -17,6 +17,7 @@ const EditProfile = ({
 }) => {
   const [bio, setBio] = useState(user.bio);
   const [photo, setPhoto] = useState(null);
+  const [message, setMessage] = useState("Save")
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,39 +27,28 @@ const EditProfile = ({
   const onChange = (e) => {
     setBio(e.target.value);
   };
-  //   SET AND SUBMIT PROFILE PHOTO
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     if (photo === null) {
-  //       //   setMessage('You need to upload a picture first...');
-  //       console.log("A");
-  //       return;
-  //     }
-  //     const regex = RegExp(/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i);
-  //     if (photo.size > 8000000) {
-  //       //   setMessage('File is too large! Try something smaller');
-  //       //   setTimeout(messageReset, 3000);
-  //     } else if (!regex.test(photo.name)) {
-  //       //   setMessage('File is not an image...');
-  //     } else if (photo) {
-  //       const photoURL = await uploadPhoto(photo);
-  //       const formData = { url: photoURL };
-  //       formData.url = photoURL;
-  //       await updateAvatar(formData);
-  //     }
-  //   } catch (err) {
-  //     console.error(err.message);
-  //   }
-  // };
 
+   const messageReset = () => {
+     setMessage("Save")
+   }
   const handleOnChange = async (event) => {
     try {
       const file = event.target.files[0];
-      setPhoto(file);
-      const photoURL = await uploadPhoto(file);
-      const formData = { url: photoURL };
-      await updateAvatar(formData);
+      const regex = RegExp(/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i);
+      if (file.size > 8000000) {
+        setMessage("File is too large! Try something smaller");
+        setTimeout(messageReset, 3000);
+      } else if (!regex.test(file.name)) {
+        setMessage("Photo is not an image...");
+        setTimeout(messageReset, 3000);
+      } else if (file) {
+        setMessage("Uploading...")
+        setPhoto(file);
+        const photoURL = await uploadPhoto(file);
+        const formData = { url: photoURL };
+        await updateAvatar(formData);
+        setMessage("Save")
+      }
     } catch (err) {
       console.error(err.message);
     }
@@ -85,7 +75,7 @@ const EditProfile = ({
                   margin: "auto",
                   display: "block",
                   marginTop: "10vh",
-                  marginRight:"2vh"
+                  marginRight:"2.2vh"
                 }}
               ></img>
             </label>
@@ -127,7 +117,7 @@ const EditProfile = ({
               }}
               type="submit"
             >
-              Save
+              {message}
             </Button>
           </div>
         </form>

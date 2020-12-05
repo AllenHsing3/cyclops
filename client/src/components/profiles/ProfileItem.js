@@ -6,27 +6,35 @@ const ProfileItem = ({
   profile: {
     user: { _id, name, bio, avatar },
     watchCount,
-  },
+  }
 }) => {
-  
   return (
     <div className="profile">
-      <img src={avatar} className="round-img" alt="avatar"               style={{
-                verticalAlign: "middle",
-                maxWidth: "15vh",
-                height: "15vh",
-                borderRadius: "50%",
-                objectFit: "cover",
-                margin: "auto",
-                display: "block",
-              }}/>
-      <div style={{width:"30vh",}}>
+      <img
+        src={avatar}
+        className="round-img"
+        alt="avatar"
+        style={{
+          verticalAlign: "middle",
+          maxWidth: "15vh",
+          height: "15vh",
+          borderRadius: "50%",
+          objectFit: "cover",
+          margin: "auto",
+          display: "block",
+        }}
+      />
+      <div style={{ width: "30vh" }}>
         <p className="text-primary">{name}</p>
-        <p className="text-secondary" style={{fontSize:".9rem"}}>{watchCount===1? watchCount + " watch" : watchCount + " watches"}</p>
-        <p className="text-secondary">{bio.length <= 100 ? bio : bio.slice(0,100) + "..."}</p>
+        <p className="text-secondary" style={{ fontSize: ".9rem" }}>
+          {watchCount === 1 ? watchCount + " watch" : watchCount + " watches"}
+        </p>
+        <p className="text-secondary">
+          {bio.length <= 100 ? bio : bio.slice(0, 100) + "..."}
+        </p>
       </div>
       <div>
-      <Link to={`/profile/${_id}`} className="btn  btn-pill">
+        <Link to={`/${name}`} className="btn  btn-pill">
           View Profile
         </Link>
       </div>

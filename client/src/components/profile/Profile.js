@@ -9,8 +9,8 @@ import { getProfileById } from '../../actions/profile';
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   useEffect(() => {
-    getProfileById(match.params.id);
-  }, [getProfileById, match.params.id]);
+    getProfileById(match.params.name);
+  }, [getProfileById, match.params.name]);
 
   return (
     <Fragment>
@@ -56,12 +56,10 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
             {profile.watchBox.map((watch) => (
               <WatchCard watch={watch} />
             ))}
-
-            <BlankCard />
           </div>
         ) : (
           <Fragment>
-            <BlankCard />
+            
           </Fragment>
         )}
       </div>

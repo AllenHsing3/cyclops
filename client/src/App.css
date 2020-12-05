@@ -502,7 +502,7 @@ button {
   top: 0px;
   width: 40vh;
   height: 100vh;
-  background-color: #222222;
+  background-color: #2b3131;
 }
 
 .add-watch-form{
@@ -572,15 +572,3 @@ button {
   margin-bottom: 2vh;
 }
 
-/* body :not(#unblurred) { 
-  -webkit-filter: blur(3px); 
-  -moz-filter: blur(3px); 
-  -o-filter: blur(3px); 
-  -ms-filter: blur(3px); 
-  filter: blur(3px); 
-} 
-#unblurred #box {
-  background:yellow; 
-  border:2px solid black; 
-  filter: blur(0px);
-} */

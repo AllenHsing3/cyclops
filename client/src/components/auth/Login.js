@@ -24,7 +24,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   // To redirect if logged in
   if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/user/dashboard" />;
   }
 
   return (
@@ -62,7 +62,7 @@ const Login = ({ login, isAuthenticated }) => {
             </form>
             <p className="text-secondary" style={{ marginTop: "10px" }}>
               Don't have have an account?{" "}
-              <Link className="text-primary" to="/register">
+              <Link className="text-primary" to="/user/register">
                 Sign Up
               </Link>
             </p>

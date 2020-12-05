@@ -7,7 +7,7 @@ import { Fragment } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-const AddWatch = ({ createProfile, uploadPhoto }) => {
+const AddWatch = ({ createProfile, uploadPhoto, submitted }) => {
   const initialState = {
     name: "",
     description: "",
@@ -20,9 +20,9 @@ const AddWatch = ({ createProfile, uploadPhoto }) => {
 
   const { name, description } = formData;
 
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Save");
   function messageReset() {
-    setMessage("");
+    setMessage("Save");
   }
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,10 +40,13 @@ const AddWatch = ({ createProfile, uploadPhoto }) => {
         setTimeout(messageReset, 3000);
       } else if (!regex.test(photo.name)) {
         setMessage("File is not an image...");
+        setTimeout(messageReset, 3000);
       } else if (photo) {
+        setMessage("Uploading...")
         const photoURL = await uploadPhoto(photo);
         formData.url = photoURL;
         await createProfile(formData);
+        submitted(false);
       }
     } catch (err) {
       console.error(err.message);
@@ -69,7 +72,6 @@ const AddWatch = ({ createProfile, uploadPhoto }) => {
           >
             <div>
               <label for="photo">
-              
                 <img
                   src={previewImg.file}
                   alt=""
@@ -130,7 +132,7 @@ const AddWatch = ({ createProfile, uploadPhoto }) => {
                 }}
                 type="submit"
               >
-                Save
+                {message}
               </Button>
             </div>
           </form>

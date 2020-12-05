@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-const WatchPage = ({ watch, user, watchCount }) => {
+const WatchPage = ({ watch, profile:{profile}, watchCount }) => {
   const { _id, name, url, description } = watch;
   // document.body.classList.add('blur')
 
@@ -31,7 +31,7 @@ const WatchPage = ({ watch, user, watchCount }) => {
         >
           <div style={{ display: "flex", marginBottom: "2vh" }}>
             <img
-              src={user && user.avatar}
+              src={profile.user && profile.user.avatar}
               style={{
                 width: "5vh",
                 height: "5vh",
@@ -46,7 +46,7 @@ const WatchPage = ({ watch, user, watchCount }) => {
                 textAlign: "left",
               }}
             >
-              <p className="text-primary">{user.name}</p>
+              <p className="text-primary">{profile.user.name}</p>
               <p className="text-secondary">{watchCount} watches</p>
             </div>
             <p></p>
@@ -67,12 +67,12 @@ const WatchPage = ({ watch, user, watchCount }) => {
 };
 
 WatchPage.propTypes = {
-  user: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
   watchCount: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  user: state.auth.user,
+  profile: state.profile,
   watchCount: state.profile.profile.watchCount,
 });
 

@@ -31,7 +31,6 @@ router.post('/', [
         user = new User({
             name,
             password,
-            bio: null
         })
         // encrypt password
         const salt = await bcrypt.genSalt(10); // 10 is recomended in docs

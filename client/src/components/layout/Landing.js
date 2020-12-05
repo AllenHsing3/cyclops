@@ -5,15 +5,15 @@ import PropTypes from 'prop-types'
 
 const Landing = ({ isAuthenticated }) => {
   if(isAuthenticated) {
-    return <Redirect to='/dashboard' />
+    return <Redirect to='/user/dashboard' />
   }
   // document.body.style.overflow = "hidden"
     return(
         <section className="landing">
           <div className="landing-inner">
             <div className="buttons">
-              <Link to="/register" className="btn btn-primary btn-pill">Sign Up</Link>
-              <Link to="/login" className="btn btn-light btn-pill">Login</Link>
+              <Link to="/user/register" className="btn btn-primary btn-pill">Sign Up</Link>
+              <Link to="/user/login" className="btn btn-light btn-pill">Login</Link>
             </div>
         </div>
       </section>  

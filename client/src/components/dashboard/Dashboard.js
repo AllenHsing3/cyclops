@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import ReactDOM from 'react-dom'
 import PropTypes from "prop-types";
 import Spinner from "../layout/Spinner";
 import { connect } from "react-redux";
@@ -10,6 +11,7 @@ import WatchCard from "./WatchCard";
 import BlankCard from "./BlankCard";
 import EditProfile from "../profile-forms/EditProfile";
 
+
 const Dashboard = ({
   getCurrentProfile,
   auth: { user },
@@ -19,11 +21,11 @@ const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
+
   // Set up bio edit pane on click
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
   const [displayForm, toggleDisplayForm] = useState(false);
-  const [blur, toggleBlur] = useState("");
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
@@ -82,9 +84,9 @@ const Dashboard = ({
             <BlankCard />
           </div>
         ) : (
-          <Fragment>
+          <div className="profile-container">
             <BlankCard />
-          </Fragment>
+            </div>
         )}
       </div>
     </Fragment>

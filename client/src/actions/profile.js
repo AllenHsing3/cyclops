@@ -43,17 +43,14 @@ export const getProfiles = () => async (dispatch) => {
       payload: sortedProfiles,
     });
   } catch (err) {
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
-    });
+    console.error(err.message)
   }
 };
 
-// Get profile by ID
-export const getProfileById = (userId) => async (dispatch) => {
+// Get profile by name
+export const getProfileById = (userName) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/profile/user/${userId}`);
+    const res = await axios.get(`/api/profile/user/${userName}`);
 
     dispatch({
       type: GET_PROFILE,
@@ -69,7 +66,7 @@ export const getProfileById = (userId) => async (dispatch) => {
 
 
 // Create or update profile
-export const createProfile = (formData, edit = true) => async (
+export const createProfile = (formData) => async (
   dispatch
 ) => {
   try {
@@ -85,7 +82,7 @@ export const createProfile = (formData, edit = true) => async (
       type: GET_PROFILE,
       payload: res.data,
     });
-    dispatch(setAlert(edit ? 'Profile Edited' : 'Profile Created', 'success'));
+    // dispatch(setAlert('Watch added to your box!', 'success'));
 
 
   } catch (err) {
@@ -123,6 +120,7 @@ export const deleteAccount = () => async (dispatch) => {
 export const uploadPhoto = (photo) => {
   return async (dispatch) => {
     try {
+      // dispatch(setAlert('Uploading...', 'success'))
       let res = await axios.post('/api/profile/photo')
       const url =
         'https://uploads.slate.host/api/public/41497e50-cb83-46f2-a640-270c070c4c5d';
@@ -144,7 +142,7 @@ export const uploadPhoto = (photo) => {
 };
 
 // Upload Avatar
-export const updateAvatar = (formData, edit = true) => async (
+export const updateAvatar = (formData) => async (
   dispatch
 ) => {
   try {
@@ -160,7 +158,7 @@ export const updateAvatar = (formData, edit = true) => async (
       type: AVATAR_SAVED,
       payload: res.data,
     });
-    dispatch(setAlert(edit ? 'Profile Edited' : 'Profile Created', 'success'));
+    // dispatch(setAlert('Avatar Saved', 'success'));
 
 
   } catch (err) {
