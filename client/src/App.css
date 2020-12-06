@@ -41,8 +41,6 @@ img {
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
-  /* margin-top: 6rem; */
-  /* margin-bottom: 3rem; */
 }
 
 /* Text Styles*/
@@ -572,3 +570,9 @@ button {
   margin-bottom: 2vh;
 }
 
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}

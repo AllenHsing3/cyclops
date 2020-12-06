@@ -35,6 +35,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       <section className="auth">
         <div className="landing-inner">
           <div style={{ marginBottom: "20vh" }}>
+            
             <h1 className="large text-primary">Sign Up</h1>
             <form
               className="form"

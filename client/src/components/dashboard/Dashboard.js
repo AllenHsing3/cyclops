@@ -73,7 +73,7 @@ const Dashboard = ({
           <p className="text-primary" style={{ marginTop: "1vh" }}>
             {user && user.name}
           </p>
-          <p className="text-secondary">{user.bio}</p>
+          <p className="text-secondary">{user && user.bio}</p>
         </div>
         {profile !== null ? (
           <div className="profile-container">
