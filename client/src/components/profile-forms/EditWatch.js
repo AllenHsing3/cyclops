@@ -2,20 +2,23 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
-import { createProfile, uploadPhoto } from "../../actions/profile";
+import { updateWatch, uploadPhoto, deleteWatch } from "../../actions/profile";
 import { Fragment } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-const AddWatch = ({ createProfile, uploadPhoto, submitted }) => {
+const AddWatch = ({ updateWatch, uploadPhoto, submitted, watch, deleteWatch }) => {
+
   const initialState = {
-    name: "",
-    description: "",
+    name: watch.name,
+    description: watch.description,
+    url: watch.url,
+    watchId: watch._id
   };
   const [formData, setFormData] = useState(initialState);
   const [photo, setPhoto] = useState(null);
   const [previewImg, setPreviewImg] = useState({
-    file: "https://slate.textile.io/ipfs/bafkreidczflflx55t3w7jf6pbczi74aw7jli2m5kcuwb2zre3imbyuffc4",
+    file: watch.url,
   });
 
   const { name, description } = formData;
@@ -30,9 +33,10 @@ const AddWatch = ({ createProfile, uploadPhoto, submitted }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
+
       if (photo === null) {
-        setMessage("You need to upload a picture first...");
-        return setTimeout(messageReset, 3000);
+        updateWatch(formData)
+        return submitted(false)
       }
       const regex = RegExp(/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i);
       if (photo.size > 8000000) {
@@ -45,7 +49,7 @@ const AddWatch = ({ createProfile, uploadPhoto, submitted }) => {
         setMessage("Uploading...")
         const photoURL = await uploadPhoto(photo);
         formData.url = photoURL;
-        await createProfile(formData);
+        await updateWatch(formData);
         submitted(false);
       }
     } catch (err) {
@@ -60,6 +64,11 @@ const AddWatch = ({ createProfile, uploadPhoto, submitted }) => {
       file: URL.createObjectURL(file),
     });
   };
+
+  const onDelete = () => {
+    deleteWatch(formData)
+    return submitted(false)
+}
 
   return (
     <Fragment>
@@ -92,7 +101,6 @@ const AddWatch = ({ createProfile, uploadPhoto, submitted }) => {
                   type="file"
                   name="photo"
                   onChange={handleOnChange}
-                  required
                 />
               </div>
             </div>
@@ -114,7 +122,7 @@ const AddWatch = ({ createProfile, uploadPhoto, submitted }) => {
                 rows={3}
                 style={{ width: "30vh" }}
                 type="text"
-                placeholder="Every piece has a story! Why did you aquire it? What do you like or dislike about it?"
+                placeholder=""
                 name="description"
                 value={description}
                 onChange={(e) => onChange(e)}
@@ -136,6 +144,20 @@ const AddWatch = ({ createProfile, uploadPhoto, submitted }) => {
               </Button>
             </div>
           </form>
+          <div style={{}}>
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: "red",
+                  borderRadius: "90px",
+                  width: "30vh",
+                  marginTop: "2vh",
+                }}
+                onClick={() => onDelete()}
+              >
+                Remove from your watch box
+              </Button>
+            </div>
         </div>
       </div>
     </Fragment>
@@ -143,10 +165,11 @@ const AddWatch = ({ createProfile, uploadPhoto, submitted }) => {
 };
 
 AddWatch.propTypes = {
-  createProfile: PropTypes.func.isRequired,
+  updateWatch: PropTypes.func.isRequired,
   uploadPhoto: PropTypes.func.isRequired,
+  deleteWatch: PropTypes.func.isRequired,
 };
 
-export default connect(null, { createProfile, uploadPhoto })(
+export default connect(null, { updateWatch, uploadPhoto, deleteWatch })(
   withRouter(AddWatch)
 );

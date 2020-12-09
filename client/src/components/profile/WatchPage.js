@@ -31,7 +31,7 @@ const WatchPage = ({ watch, profile:{profile}, watchCount }) => {
         >
           <div style={{ display: "flex", marginBottom: "2vh" }}>
             <img
-              src={profile.user && profile.user.avatar}
+              src={profile && profile.user.avatar}
               style={{
                 width: "5vh",
                 height: "5vh",
@@ -53,7 +53,7 @@ const WatchPage = ({ watch, profile:{profile}, watchCount }) => {
           </div>
           <p
             className="text-primary"
-            style={{ textAlign: "left", fontSize: "2rem" }}
+            style={{ textAlign: "left", fontSize: "1.5rem", wordWrap:"break-word" }}
           >
             {name}
           </p>

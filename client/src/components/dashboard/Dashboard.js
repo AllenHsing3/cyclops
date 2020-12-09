@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import ReactDOM from 'react-dom'
+import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import Spinner from "../layout/Spinner";
 import { connect } from "react-redux";
@@ -11,7 +11,6 @@ import WatchCard from "./WatchCard";
 import BlankCard from "./BlankCard";
 import EditProfile from "../profile-forms/EditProfile";
 
-
 const Dashboard = ({
   getCurrentProfile,
   auth: { user },
@@ -20,7 +19,6 @@ const Dashboard = ({
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
-
 
   // Set up bio edit pane on click
   const wrapperRef = useRef(null);
@@ -75,10 +73,20 @@ const Dashboard = ({
           </p>
           <p className="text-secondary">{user && user.bio}</p>
         </div>
+        <div style={{ width: "96vh", alignSelf: "center", textAlign: "left" }}>
+          <div
+            className="text-primary"
+            style={{ marginLeft: "2.4vh",marginBottom:"1vh", borderBottom: "1px solid white" }}
+          >
+            <button className="unstyleButton">Current</button>
+            <span> </span>
+            <button className="unstyleButton">Previous</button>
+          </div>
+        </div>
         {profile !== null ? (
           <div className="profile-container">
             {profile.watchBox.map((watch) => (
-              <WatchCard watch={watch} />
+              <WatchCard watch={watch} edit={true} />
             ))}
 
             <BlankCard />
@@ -86,7 +94,7 @@ const Dashboard = ({
         ) : (
           <div className="profile-container">
             <BlankCard />
-            </div>
+          </div>
         )}
       </div>
     </Fragment>

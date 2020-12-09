@@ -59,7 +59,7 @@ router.post('/', [
         jwt.sign(
             payload, 
             config.get('jwtSecret'),  /// Pull the password from config
-            { expiresIn: 36000},
+            { expiresIn: 360000},
             (err, token) => {
                 if(err) throw token;
                 res.json({ token });

@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 // Need connect for bringing in auth
 // Destructure the component and the rest
 const PrivateRoute = ({ component: Component, auth: { isAuthenticated, loading }, ...rest }) => (
-    <Route {...rest} render={props => !isAuthenticated && !loading ? (<Redirect to='/login' />) : (<Component {...props} />)} />
+    <Route {...rest} render={props => !isAuthenticated && !loading ? (<Redirect to='/user/login' />) : (<Component {...props} />)} />
 )
 
 PrivateRoute.propTypes = {

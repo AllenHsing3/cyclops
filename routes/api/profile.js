@@ -27,7 +27,7 @@ router.get('/me', auth, async (req, res) => {
 });
 
 // @route    POST api/profile
-// @desc     Create or update profile
+// @desc     Create or add watch to profile
 // @access   Private
 
 router.post('/', [auth, [
@@ -43,8 +43,6 @@ router.post('/', [auth, [
         url
     } = req.body
     try{
-
-        
         let profile = await Profile.findOne({ user: req.user.id });
         
         if(profile){
@@ -65,7 +63,70 @@ router.post('/', [auth, [
         console.error(err.message);
         res.status(500).send('Server error')
     }
+})
 
+// @route    POST api/profile/update
+// @desc     Update Watch 
+// @access   Private
+
+router.post('/update', [auth, [
+    check('name', 'Status is required').not().isEmpty(),
+]], async (req, res) => {
+    let errors = validationResult(req)
+    if(!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+    }
+    const {
+        name,
+        description,
+        url,
+        watchId
+    } = req.body
+    try{
+        let profile = await Profile.findOne({ user: req.user.id });
+        if(!profile){
+            return console.error("Error. No profile found")
+        }
+        for(let i = 0; i < profile.watchBox.length; i++ ){
+            if(profile.watchBox[i]._id == watchId ){
+                profile.watchBox[i].name = name
+                profile.watchBox[i].description = description
+                profile.watchBox[i].url = url
+            }
+        }
+        await profile.save()
+        res.json(profile)
+
+    }catch(err){
+        console.error(err.message);
+        res.status(500).send('Server error')
+    }
+})
+
+// @route    POST api/profile/update
+// @desc     Delete Watch
+// @access   Private
+
+router.post('/delete', auth, async (req, res) => {
+
+    try{
+        let profile = await Profile.findOne({ user: req.user.id });
+        if(!profile){
+            return console.error("Error. No profile found")
+        }
+        for(let i = 0; i < profile.watchBox.length; i++ ){
+            if(profile.watchBox[i]._id == req.body.watchId ){
+                profile.watchBox.splice(i,1)
+            }
+        }
+        profile.watchCount = profile.watchBox.length
+        await profile.save()
+        res.json(profile)
+
+    }catch(err){
+        console.error(err.message);
+        res.status(500).send('Server error')
+    }
 })
 
 // @route    GET api/profile

@@ -24,3 +24,4 @@ export const ADD_COMMENT = 'ADD_COMMENT'
 export const REMOVE_COMMENT = 'REMOVE_COMMENT'
 export const SAVED_BIO = 'SAVED_BIO'
 export const AVATAR_SAVED = 'AVATAR_SAVED'
+export const WATCH_REMOVED = "WATCH_REMOVED"

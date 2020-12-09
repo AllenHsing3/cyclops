@@ -33,7 +33,7 @@ const BlankCard = () => {
       className="watch-card"
       onClick={() => toggleDisplayForm(true)}
       ref={wrapperRef}
-      style={{width:"31vh", height:"45vh", display:"flex", alignContent:"center"}}
+      style={{width:"31vh", height:"40vh", display:"flex", alignContent:"center"}}
     >
       {displayForm && <AddWatch submitted={closeForm} />}
       <div className='profile-img'>

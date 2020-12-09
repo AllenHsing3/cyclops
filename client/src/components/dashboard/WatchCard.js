@@ -1,8 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
-import ReactDOM from 'react-dom'
+import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import WatchPage from "../profile/WatchPage";
+import EditWatch from "../profile-forms/EditWatch";
 
 const style = document.createElement("style");
 style.innerText = `
@@ -38,8 +39,8 @@ const Modal = ({ children }) => {
   return null;
 };
 
-const WatchCard = ({ watch }) => {
-  const [modal, toggleModal] = useState({modalContent:null})
+const WatchCard = ({ watch, edit }) => {
+  const [modal, toggleModal] = useState({ modalContent: null });
   const { _id, name, url } = watch;
   document.head.append(style);
 
@@ -53,7 +54,7 @@ const WatchCard = ({ watch }) => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
           toggleDisplayForm(false);
-          toggleModal({modalContent:null})
+          // toggleModal({ modalContent: null });
         }
       }
 
@@ -65,23 +66,69 @@ const WatchCard = ({ watch }) => {
       };
     }, [ref]);
   }
-  return (
-    <div style={{width:"31vh", height:"45vh"}}>
-    <div
-      className="watch-card"
-      onClick={function () {
-        toggleDisplayForm(true);
-        toggleModal({modalContent:(<WatchPage watch={watch} />)})
-      }}
-      ref={wrapperRef}
-    >
-      <img className="profile-img" src={url} alt="Watch in Box" />
-      <p className="text-primary" style={{ textAlign: "left", marginTop:"1vh", marginBottom:"2vh" }}>
-        {name}
-      </p>
-      <Modal>{modal.modalContent}</Modal>
 
-    </div>
+  const closeForm = (submitSuccessful) => {
+    toggleDisplayForm(submitSuccessful);
+  };
+
+  return (
+    <div style={{ width: "31vh", height: "45vh" }}>
+      {displayForm && (
+        <div ref={wrapperRef}>
+          <EditWatch watch={watch} submitted={closeForm} />
+        </div>
+      )}
+      <div className="watch-card">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            // backgroundColor: "black",
+            height:"40vh"
+          }}
+        >
+          <img
+            className="profile-img"
+            src={url}
+            alt="Watch in Box"
+            onClick={function () {
+              toggleModal({
+                modalContent: (
+                  <div onClick={() => toggleModal({ modalContent: null })}>
+                    <WatchPage watch={watch} />{" "}
+                  </div>
+                ),
+              });
+            }}
+          />
+        </div>
+        <div>
+          <p
+            className="text-primary"
+            style={{
+              textAlign: "left",
+              marginTop: "1vh",
+              marginBottom: "2vh",
+              wordWrap: "break-word",
+              justifySelf: "flex-end",
+            }}
+          >
+            {name}{" "}
+            {edit === true ? (
+              <span
+                style={{ color: "blue" }}
+                onClick={() => toggleDisplayForm(true)}
+                ref={wrapperRef}
+              >
+                <i className="fas fa-edit"></i>
+              </span>
+            ) : null}
+          </p>
+        </div>
+
+        <Modal>{modal.modalContent}</Modal>
+      </div>
     </div>
   );
 };
@@ -89,4 +136,3 @@ const WatchCard = ({ watch }) => {
 WatchCard.propTypes = {};
 
 export default WatchCard;
-

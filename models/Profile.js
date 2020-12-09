@@ -17,6 +17,10 @@ const ProfileSchema = new mongoose.Schema({
       url: {
         type: String,
       },
+      previous: {
+        type: Boolean,
+        default: false
+      }
     },
   ],
   watchCount: {
