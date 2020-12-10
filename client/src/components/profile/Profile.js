@@ -100,7 +100,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               <div className="profile-container">
                 {profile.watchBox.map((watch) =>
                   watch.previous == watchSet.displayPrevious ? (
-                    <WatchCard watch={watch} edit={true} />
+                    <WatchCard watch={watch} edit={false} />
                   ) : null
                 )}
               </div>
