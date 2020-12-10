@@ -89,7 +89,15 @@ const WatchCard = ({ watch, edit }) => {
           }}
         >
           <img
-            className="profile-img"
+            // className="profile-img"
+            style={{
+              verticalAlign: "middle",
+              maxWidth: "39vh",
+              height: "39vh",
+              objectFit: "cover",
+              marginRight: "2vh",
+              display: "block",
+            }}
             src={url}
             alt="Watch in Box"
             onClick={function () {

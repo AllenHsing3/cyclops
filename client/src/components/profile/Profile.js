@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
@@ -9,7 +9,28 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   useEffect(() => {
     getProfileById(match.params.name);
   }, [getProfileById, match.params.name]);
+  const [watchSet, toggleWatchSet] = useState({
+    current: "text-primary",
+    previous: "text-secondary",
+    display: "current",
+  });
 
+  const watchSetHelper = (e) => {
+    if (e.currentTarget.id == "current") {
+      toggleWatchSet({
+        current: "text-primary",
+        previous: "text-secondary",
+        display: "current",
+      });
+    }
+    if (e.currentTarget.id == "previous") {
+      toggleWatchSet({
+        current: "text-secondary",
+        previous: "text-primary",
+        display: "previous",
+      });
+    }
+  };
   return (
     <Fragment>
       {profile === null ? (
@@ -37,6 +58,37 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               </p>
               <p className="text-secondary">{profile.user.bio}</p>
             </div>
+            <div style={{ width: "96vh", alignSelf: "center", textAlign: "left" }}>
+
+          <div
+            style={{
+              marginLeft: "2.4vh",
+              marginBottom: "1vh",
+              borderBottom: "1px solid white",
+            }}
+          >
+            <button
+              id="current"
+              onClick={(e) => watchSetHelper(e)}
+              className="unstyleButton"
+              style={{ fontSize: "1.4rem" }}
+            >
+              <p style={{ fontSize: "1.4rem" }} className={watchSet.current}>
+                Current
+              </p>
+            </button>
+            <button
+              id="previous"
+              onClick={(e) => watchSetHelper(e)}
+              style={{ marginLeft: "1vh" }}
+              className="unstyleButton"
+            >
+              <p style={{ fontSize: "1.4rem" }} className={watchSet.previous}>
+                Previous
+              </p>
+            </button>
+          </div>
+        </div>
             {profile !== null ? (
               <div className="profile-container">
                 {profile.watchBox.map((watch) => (

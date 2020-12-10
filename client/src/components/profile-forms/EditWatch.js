@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
-import { updateWatch, uploadPhoto, deleteWatch } from "../../actions/profile";
+import { updateWatch, uploadPhoto, deleteWatch, tagPrevious } from "../../actions/profile";
 import { Fragment } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-const AddWatch = ({ updateWatch, uploadPhoto, submitted, watch, deleteWatch }) => {
+const AddWatch = ({ updateWatch, uploadPhoto, submitted, watch, deleteWatch, tagPrevious }) => {
 
   const initialState = {
     name: watch.name,
@@ -69,6 +69,11 @@ const AddWatch = ({ updateWatch, uploadPhoto, submitted, watch, deleteWatch }) =
     deleteWatch(formData)
     return submitted(false)
 }
+ const markPrevious = () => {
+   tagPrevious(formData)
+   return submitted(false)
+
+ }
 
   return (
     <Fragment>
@@ -148,6 +153,20 @@ const AddWatch = ({ updateWatch, uploadPhoto, submitted, watch, deleteWatch }) =
               <Button
                 variant="contained"
                 style={{
+                  backgroundColor: "grey",
+                  borderRadius: "90px",
+                  width: "30vh",
+                  marginTop: "2vh",
+                }}
+                onClick={() => markPrevious()}
+              >
+                Move to previously owned
+              </Button>
+            </div>
+          <div style={{}}>
+              <Button
+                variant="contained"
+                style={{
                   backgroundColor: "red",
                   borderRadius: "90px",
                   width: "30vh",
@@ -168,8 +187,9 @@ AddWatch.propTypes = {
   updateWatch: PropTypes.func.isRequired,
   uploadPhoto: PropTypes.func.isRequired,
   deleteWatch: PropTypes.func.isRequired,
+  tagPrevious: PropTypes.func.isRequired,
 };
 
-export default connect(null, { updateWatch, uploadPhoto, deleteWatch })(
+export default connect(null, { updateWatch, uploadPhoto, deleteWatch, tagPrevious })(
   withRouter(AddWatch)
 );

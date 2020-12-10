@@ -33,12 +33,18 @@ const WatchPage = ({ watch, profile:{profile}, watchCount }) => {
             <img
               src={profile && profile.user.avatar}
               style={{
-                width: "5vh",
+                verticalAlign: "middle",
+                maxWidth: "5vh",
                 height: "5vh",
+                borderRadius: "50%",
+                objectFit: "cover",
                 marginRight: "2vh",
-                borderRadius: "90px",
+                display: "block",
               }}
             ></img>
+
+
+
             <div
               style={{
                 display: "flex",

@@ -19,7 +19,11 @@ const Dashboard = ({
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
-
+  const [watchSet, toggleWatchSet] = useState({
+    current: "text-primary",
+    previous: "text-secondary",
+    displayPrevious: false,
+  });
   // Set up bio edit pane on click
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
@@ -41,6 +45,22 @@ const Dashboard = ({
     }, [ref]);
   }
 
+  const watchSetHelper = (e) => {
+    if (e.currentTarget.id == "current") {
+      toggleWatchSet({
+        current: "text-primary",
+        previous: "text-secondary",
+        displayPrevious: false,
+      });
+    }
+    if (e.currentTarget.id == "previous") {
+      toggleWatchSet({
+        current: "text-secondary",
+        previous: "text-primary",
+        displayPrevious: true,
+      });
+    }
+  };
   return loading && profile == null && profile === null ? (
     <Spinner />
   ) : (
@@ -75,19 +95,37 @@ const Dashboard = ({
         </div>
         <div style={{ width: "96vh", alignSelf: "center", textAlign: "left" }}>
           <div
-            className="text-primary"
-            style={{ marginLeft: "2.4vh",marginBottom:"1vh", borderBottom: "1px solid white" }}
+            style={{
+              borderBottom: "1px solid white",
+            }}
           >
-            <button className="unstyleButton">Current</button>
-            <span> </span>
-            <button className="unstyleButton">Previous</button>
+            <button
+              id="current"
+              onClick={(e) => watchSetHelper(e)}
+              className="unstyleButton"
+              style={{ fontSize: "1.4rem" }}
+            >
+              <p style={{ fontSize: "1.4rem" }} className={watchSet.current}>
+                Current
+              </p>
+            </button>
+            <button
+              id="previous"
+              onClick={(e) => watchSetHelper(e)}
+              style={{ marginLeft: "1vh" }}
+              className="unstyleButton"
+            >
+              <p style={{ fontSize: "1.4rem" }} className={watchSet.previous}>
+                Previous
+              </p>
+            </button>
           </div>
         </div>
         {profile !== null ? (
           <div className="profile-container">
-            {profile.watchBox.map((watch) => (
+            {profile.watchBox.map((watch) => watch.previous == watchSet.displayPrevious ?(
               <WatchCard watch={watch} edit={true} />
-            ))}
+            ): null)}
 
             <BlankCard />
           </div>

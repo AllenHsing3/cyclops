@@ -103,7 +103,7 @@ router.post('/update', [auth, [
     }
 })
 
-// @route    POST api/profile/update
+// @route    POST api/profile/delete
 // @desc     Delete Watch
 // @access   Private
 
@@ -117,6 +117,32 @@ router.post('/delete', auth, async (req, res) => {
         for(let i = 0; i < profile.watchBox.length; i++ ){
             if(profile.watchBox[i]._id == req.body.watchId ){
                 profile.watchBox.splice(i,1)
+            }
+        }
+        profile.watchCount = profile.watchBox.length
+        await profile.save()
+        res.json(profile)
+
+    }catch(err){
+        console.error(err.message);
+        res.status(500).send('Server error')
+    }
+})
+
+// @route    POST api/profile/previous
+// @desc     Delete Watch
+// @access   Private
+
+router.post('/previous', auth, async (req, res) => {
+
+    try{
+        let profile = await Profile.findOne({ user: req.user.id });
+        if(!profile){
+            return console.error("Error. No profile found")
+        }
+        for(let i = 0; i < profile.watchBox.length; i++ ){
+            if(profile.watchBox[i]._id == req.body.watchId ){
+                profile.watchBox[i].previous = true
             }
         }
         profile.watchCount = profile.watchBox.length

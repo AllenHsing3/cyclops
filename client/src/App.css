@@ -587,3 +587,8 @@ button {
 	cursor: pointer;
 	outline: inherit;
 }
+
+.text-highlighted{
+  font-weight: bold;
+  font-size:2rem;
+}
