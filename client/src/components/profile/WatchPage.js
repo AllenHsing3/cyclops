@@ -12,11 +12,19 @@ const WatchPage = ({ watch, profile: { profile }, watchCount }) => {
         <img
           src={url}
           alt="Image of watch"
-          style={{ width: "50vh", height: "auto" }}
+          // style={{ width: "50vh", height: "auto" }}
+          style={{
+            verticalAlign: "middle",
+            width: "36vh",
+            height: "auto",
+            objectFit: "cover",
+            margin: "auto",
+            display: "block",
+          }}
         />
       </div>
       <div
-        style={{ width: "27vh", height: "auto", backgroundColor: "#222222" }}
+        style={{ width: "23vh", height: "auto", backgroundColor: "#222222" }}
       >
         <div
           style={{
