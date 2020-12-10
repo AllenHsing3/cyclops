@@ -13,6 +13,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           height: "auto",
           position: "fixed",
           marginTop: "2vh",
+          left:"1.5vh"
         }}
       >
         <Link to="/user/dashboard">
@@ -38,6 +39,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           height: "auto",
           position: "fixed",
           marginTop: "7vh",
+          left:"1.5vh"
         }}
       >
         <Link to="/user/profiles">
@@ -51,7 +53,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           height: "auto",
           position: "fixed",
           marginTop: "13vh",
-          marginLeft:".3vh"
+          marginLeft:".3vh",
+          left:"1.5vh"
         }}
       >
         <a href="/" onClick={logout}>

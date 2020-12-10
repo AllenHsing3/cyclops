@@ -14,7 +14,7 @@ const WatchPage = ({ watch, profile: { profile }, watchCount }) => {
           alt="Image of watch"
           style={{
             verticalAlign: "middle",
-            width: "36vh",
+            maxWidth: "40vh",
             height: "auto",
             margin: "auto",
             display: "block",
@@ -25,6 +25,7 @@ const WatchPage = ({ watch, profile: { profile }, watchCount }) => {
         style={{ width: "23vh", height: "auto", backgroundColor: "#222222" }}
       >
         <div
+          id="watch-page-info"
           style={{
             width: "21vh",
             height: "auto",
@@ -69,7 +70,7 @@ const WatchPage = ({ watch, profile: { profile }, watchCount }) => {
             >
               {name}
             </p>
-            <p className="text-secondary" style={{ textAlign: "left" }}>
+            <p className="text-secondary" style={{ textAlign: "left", marginBottom:"2vh" }}>
               {description}
             </p>
           </div>
