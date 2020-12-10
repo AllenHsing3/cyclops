@@ -93,41 +93,48 @@ const Dashboard = ({
           </p>
           <p className="text-secondary">{user && user.bio}</p>
         </div>
-        <div style={{ width: "96vh", alignSelf: "center", textAlign: "left" }}>
-          <div
-            style={{
-              borderBottom: "1px solid white",
-            }}
+        <div
+          style={{
+            display: "flex",
+            textAlign: "left",
+            alignSelf: "center",
+          }}
+        >
+          <div>
+          <button
+            id="current"
+            onClick={(e) => watchSetHelper(e)}
+            className="unstyleButton"
+            style={{ fontSize: "1.4rem" }}
           >
-            <button
-              id="current"
-              onClick={(e) => watchSetHelper(e)}
-              className="unstyleButton"
-              style={{ fontSize: "1.4rem" }}
-            >
-              <p style={{ fontSize: "1.4rem" }} className={watchSet.current}>
-                Current
-              </p>
-            </button>
-            <button
-              id="previous"
-              onClick={(e) => watchSetHelper(e)}
-              style={{ marginLeft: "1vh" }}
-              className="unstyleButton"
-            >
-              <p style={{ fontSize: "1.4rem" }} className={watchSet.previous}>
-                Previous
-              </p>
-            </button>
+            <p style={{ fontSize: "1.4rem" }} className={watchSet.current}>
+              Current
+            </p>
+          </button>
           </div>
+          <div>
+
+          <button
+            id="previous"
+            onClick={(e) => watchSetHelper(e)}
+            style={{ marginLeft: "1vh" }}
+            className="unstyleButton"
+          >
+            <p style={{ fontSize: "1.4rem" }} className={watchSet.previous}>
+              Previous
+            </p>
+          </button>
+          </div>
+
         </div>
         {profile !== null ? (
           <div className="profile-container">
-            {profile.watchBox.map((watch) => watch.previous == watchSet.displayPrevious ?(
-              <WatchCard watch={watch} edit={true} />
-            ): null)}
+            {profile.watchBox.map((watch) =>
+              watch.previous == watchSet.displayPrevious ? (
+                <WatchCard watch={watch} edit={true} />
+              ) : null
+            )}
             <BlankCard />
-
           </div>
         ) : (
           <div className="profile-container">

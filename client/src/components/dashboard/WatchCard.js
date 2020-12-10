@@ -1,7 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import WatchPage from "../profile/WatchPage";
 import EditWatch from "../profile-forms/EditWatch";
 
@@ -84,7 +82,6 @@ const WatchCard = ({ watch, edit }) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            // backgroundColor: "black",
             height:"40vh"
           }}
         >
@@ -95,7 +92,6 @@ const WatchCard = ({ watch, edit }) => {
               maxWidth: "39vh",
               height: "39vh",
               objectFit: "cover",
-              marginRight: "2vh",
               display: "block",
             }}
             src={url}

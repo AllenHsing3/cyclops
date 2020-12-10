@@ -59,15 +59,13 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               <p className="text-secondary">{profile.user.bio}</p>
             </div>
             <div
-              style={{ width: "96vh", alignSelf: "center", textAlign: "left" }}
+              style={{
+                display: "flex",
+                textAlign: "left",
+                alignSelf: "center",
+              }}
             >
-              <div
-                style={{
-                  marginLeft: "2.4vh",
-                  marginBottom: "1vh",
-                  borderBottom: "1px solid white",
-                }}
-              >
+              <div>
                 <button
                   id="current"
                   onClick={(e) => watchSetHelper(e)}
@@ -81,6 +79,8 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                     Current
                   </p>
                 </button>
+              </div>
+              <div>
                 <button
                   id="previous"
                   onClick={(e) => watchSetHelper(e)}

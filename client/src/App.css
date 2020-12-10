@@ -477,6 +477,7 @@ button {
   align-self: center;
   max-width: 96vh;
   justify-content: center;
+  border-top: 1px solid white;
 }
 
 .watch-card {

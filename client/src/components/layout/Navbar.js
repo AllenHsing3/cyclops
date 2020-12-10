@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
-import logo from "../../img/logo.png";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
@@ -38,7 +37,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           width: "10vh",
           height: "auto",
           position: "fixed",
-          marginTop: "5.8vh",
+          marginTop: "7vh",
         }}
       >
         <Link to="/user/profiles">
@@ -51,7 +50,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           width: "10vh",
           height: "auto",
           position: "fixed",
-          marginTop: "10vh",
+          marginTop: "13vh",
           marginLeft:".3vh"
         }}
       >
