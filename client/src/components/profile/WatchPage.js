@@ -2,31 +2,29 @@ import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-const WatchPage = ({ watch, profile:{profile}, watchCount }) => {
+const WatchPage = ({ watch, profile: { profile }, watchCount }) => {
   const { _id, name, url, description } = watch;
   // document.body.classList.add('blur')
 
-  
   return (
     <div className="view-watch">
       <div>
         <img
           src={url}
           alt="Image of watch"
-          style={{ width: "52vh", height: "auto", }}
+          style={{ width: "50vh", height: "auto" }}
         />
       </div>
       <div
-        style={{ width: "40vh", height: "auto", backgroundColor: "#222222" }}
+        style={{ width: "27vh", height: "auto", backgroundColor: "#222222" }}
       >
         <div
           style={{
-            width: "33vh",
+            width: "21vh",
             height: "auto",
             margin: "auto",
             marginTop: "3vh",
-            marginLeft: "4vh",
-            marginRight: "4vh",
+            marginLeft: "2.5vh",
           }}
         >
           <div style={{ display: "flex", marginBottom: "2vh" }}>
@@ -42,9 +40,6 @@ const WatchPage = ({ watch, profile:{profile}, watchCount }) => {
                 display: "block",
               }}
             ></img>
-
-
-
             <div
               style={{
                 display: "flex",
@@ -57,15 +52,21 @@ const WatchPage = ({ watch, profile:{profile}, watchCount }) => {
             </div>
             <p></p>
           </div>
-          <p
-            className="text-primary"
-            style={{ textAlign: "left", fontSize: "1.5rem", wordWrap:"break-word" }}
-          >
-            {name}
-          </p>
-          <p className="text-secondary" style={{ textAlign: "left" }}>
-            {description}
-          </p>
+          <div style={{ maxWidth: "18vh" }}>
+            <p
+              className="text-primary"
+              style={{
+                textAlign: "left",
+                fontSize: "1.2rem",
+                wordWrap: "break-word",
+              }}
+            >
+              {name}
+            </p>
+            <p className="text-secondary" style={{ textAlign: "left" }}>
+              {description}
+            </p>
+          </div>
         </div>
       </div>
     </div>
