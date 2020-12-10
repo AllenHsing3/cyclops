@@ -1,0 +1,7 @@
+{
+    "mongoURI" : "mongodb+srv://allen:spiderman@media.pnieu.mongodb.net/cyclops?retryWrites=true&w=majority",
+    "slateKey" : "SLA33f047b1-1ce2-4600-9561-b69706635ab5TE",
+    "jwtSecret" : "banana123",
+    "githubClientId": "dbb083db5b773b44c704",
+    "githubSecret": "50cb019ea6b5bb12db74cd8ae4baef0c49641bd7"
+}
