@@ -5,7 +5,6 @@ import Spinner from "../layout/Spinner";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
 import { deleteAccount } from "../../actions/profile";
 import WatchCard from "./WatchCard";
 import BlankCard from "./BlankCard";
