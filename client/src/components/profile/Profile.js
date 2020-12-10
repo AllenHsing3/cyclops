@@ -12,7 +12,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   const [watchSet, toggleWatchSet] = useState({
     current: "text-primary",
     previous: "text-secondary",
-    display: "current",
+    displayPrevious: false,
   });
 
   const watchSetHelper = (e) => {
@@ -20,14 +20,14 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
       toggleWatchSet({
         current: "text-primary",
         previous: "text-secondary",
-        display: "current",
+        displayPrevious: false,
       });
     }
     if (e.currentTarget.id == "previous") {
       toggleWatchSet({
         current: "text-secondary",
         previous: "text-primary",
-        display: "previous",
+        displayPrevious: true,
       });
     }
   };
@@ -58,42 +58,51 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               </p>
               <p className="text-secondary">{profile.user.bio}</p>
             </div>
-            <div style={{ width: "96vh", alignSelf: "center", textAlign: "left" }}>
-
-          <div
-            style={{
-              marginLeft: "2.4vh",
-              marginBottom: "1vh",
-              borderBottom: "1px solid white",
-            }}
-          >
-            <button
-              id="current"
-              onClick={(e) => watchSetHelper(e)}
-              className="unstyleButton"
-              style={{ fontSize: "1.4rem" }}
+            <div
+              style={{ width: "96vh", alignSelf: "center", textAlign: "left" }}
             >
-              <p style={{ fontSize: "1.4rem" }} className={watchSet.current}>
-                Current
-              </p>
-            </button>
-            <button
-              id="previous"
-              onClick={(e) => watchSetHelper(e)}
-              style={{ marginLeft: "1vh" }}
-              className="unstyleButton"
-            >
-              <p style={{ fontSize: "1.4rem" }} className={watchSet.previous}>
-                Previous
-              </p>
-            </button>
-          </div>
-        </div>
+              <div
+                style={{
+                  marginLeft: "2.4vh",
+                  marginBottom: "1vh",
+                  borderBottom: "1px solid white",
+                }}
+              >
+                <button
+                  id="current"
+                  onClick={(e) => watchSetHelper(e)}
+                  className="unstyleButton"
+                  style={{ fontSize: "1.4rem" }}
+                >
+                  <p
+                    style={{ fontSize: "1.4rem" }}
+                    className={watchSet.current}
+                  >
+                    Current
+                  </p>
+                </button>
+                <button
+                  id="previous"
+                  onClick={(e) => watchSetHelper(e)}
+                  style={{ marginLeft: "1vh" }}
+                  className="unstyleButton"
+                >
+                  <p
+                    style={{ fontSize: "1.4rem" }}
+                    className={watchSet.previous}
+                  >
+                    Previous
+                  </p>
+                </button>
+              </div>
+            </div>
             {profile !== null ? (
               <div className="profile-container">
-                {profile.watchBox.map((watch) => (
-                  <WatchCard watch={watch} edit={false} />
-                ))}
+                {profile.watchBox.map((watch) =>
+                  watch.previous == watchSet.displayPrevious ? (
+                    <WatchCard watch={watch} edit={true} />
+                  ) : null
+                )}
               </div>
             ) : (
               <Fragment></Fragment>
