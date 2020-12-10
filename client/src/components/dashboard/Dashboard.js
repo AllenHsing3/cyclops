@@ -126,8 +126,8 @@ const Dashboard = ({
             {profile.watchBox.map((watch) => watch.previous == watchSet.displayPrevious ?(
               <WatchCard watch={watch} edit={true} />
             ): null)}
-
             <BlankCard />
+
           </div>
         ) : (
           <div className="profile-container">
