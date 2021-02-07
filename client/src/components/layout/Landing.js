@@ -21,8 +21,9 @@ const Landing = ({ isAuthenticated }) => {
           <div className="main-container" style={{flexDirection:"row"}}>
             <div className="landing-about">
               <ul className='text-primary' style={{fontSize:"2rem"}}>
-                <li>Add your watches into your showcase</li>
-                <li>Customize your profile to be seen by other collectors</li>
+                <li>-Add your watches into your showcase</li>
+                <br/>
+                <li>-Customize your profile to be seen by other collectors</li>
               </ul>
             </div>
           <video width="60%" height="auto" autoplay muted loop id="vid">     
