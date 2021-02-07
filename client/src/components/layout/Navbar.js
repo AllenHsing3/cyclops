@@ -6,15 +6,15 @@ import { logout } from "../../actions/auth";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
-    <ul>
+    <ul className="navbar">
       <li
-        style={{
-          width: "10vh",
-          height: "auto",
-          position: "fixed",
-          marginTop: "2vh",
-          left:"1.5vh"
-        }}
+        // style={{
+        //   width: "10vh",
+        //   height: "auto",
+        //   position: "fixed",
+        //   marginTop: "2vh",
+        //   left:"1.5vh"
+        // }}
       >
         <Link to="/user/dashboard">
           <svg
@@ -34,13 +34,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         </Link>
       </li>
       <li
-        style={{
-          width: "10vh",
-          height: "auto",
-          position: "fixed",
-          marginTop: "7vh",
-          left:"1.5vh"
-        }}
+        // style={{
+        //   width: "10vh",
+        //   height: "auto",
+        //   position: "fixed",
+        //   marginTop: "7vh",
+        //   left:"1.5vh"
+        // }}
       >
         <Link to="/user/profiles">
         <i class="fas fa-users fa-2x"></i>
@@ -66,14 +66,14 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
 
   const guestLinks = (
-    <ul>
+    <ul className="navbar">
       <li
-        style={{
-          width: "10vh",
-          height: "auto",
-          position: "fixed",
-          marginTop: "2vh",
-        }}
+        // style={{
+        //   width: "10vh",
+        //   height: "auto",
+        //   position: "fixed",
+        //   marginTop: "2vh",
+        // }}
       >
         <Link to="/">
           <svg
@@ -93,12 +93,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         </Link>
       </li>
       <li
-        style={{
-          width: "10vh",
-          height: "auto",
-          position: "fixed",
-          marginTop: "5.8vh",
-        }}
+        // style={{
+        //   width: "10vh",
+        //   height: "auto",
+        //   position: "fixed",
+        //   marginTop: "5.8vh",
+        // }}
       >
         <Link to="/user/profiles">
         <i class="fas fa-users fa-2x"></i>

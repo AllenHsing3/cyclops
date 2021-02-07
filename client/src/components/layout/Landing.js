@@ -17,6 +17,19 @@ const Landing = ({ isAuthenticated }) => {
               <Link to="/user/login" className="btn btn-light btn-pill">Login</Link>
             </div>
         </div>
+        <div className="landing-inner">
+          <div className="main-container" style={{flexDirection:"row"}}>
+            <div className="landing-about">
+              <ul className='text-primary' style={{fontSize:"2rem"}}>
+                <li>Add your watches into your showcase</li>
+                <li>Customize your profile to be seen by other collectors</li>
+              </ul>
+            </div>
+          <video width="60%" height="auto" autoplay muted loop id="vid">     
+          <source src="https://slate.textile.io/ipfs/bafybeibbkvprlad4pu5mmowmentuzl5gxyze44wyu352rpsb3youo3ikmu"></source>         
+            </video>
+          </div>
+        </div>
       </section>  
     )
 }

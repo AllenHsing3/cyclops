@@ -311,13 +311,15 @@ button {
 .navbar {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   padding: 0.7rem 2rem;
   position: fixed;
   z-index: 1;
-  width: 100%;
-  top: 0;
+  /* width: 100%; */
+  margin: 3vh 0vh 3vh 3vh;
   opacity: 0.9;
+  height: 10vh;
 }
 
 .navbar ul {
@@ -355,6 +357,14 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.landing-about{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-right: 3vh;
 }
 
 .auth {
@@ -594,12 +604,42 @@ button {
   font-size:2rem;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 667px) {
   .view-watch {
     display: flex;
     flex-direction: column;
   }
   .watch-page-info{
     /* width:44vh; */
+  }
+  .browse-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    flex-wrap: wrap;
+    text-align: center;
+    align-self: center;
+    max-width: 101vh;
+    margin-top: 12vh;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .view-watch {
+    display: flex;
+    flex-direction: column;
+  }
+  .watch-page-info{
+    /* width:44vh; */
+  }
+  .browse-container{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+    align-self: center;
+    max-width: 101vh;
+    margin-top: 12vh;
   }
 }
