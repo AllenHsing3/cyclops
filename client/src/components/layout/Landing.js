@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import Mov from './mov.qt'
 
 const Landing = ({ isAuthenticated }) => {
   if(isAuthenticated) {
@@ -12,22 +13,28 @@ const Landing = ({ isAuthenticated }) => {
         <section className="landing">
           <div className="landing-inner">
             <div className="buttons" style={{paddingTop:"3vh"}}>
-              <p style={{fontSize:"1.5rem", marginBottom:"1vh"}}>A virtual watch box to keep track of your collection, and to share it with others.</p>
               <Link to="/user/register" className="btn btn-light btn-pill">Sign Up</Link>
               <Link to="/user/login" className="btn btn-light btn-pill">Login</Link>
             </div>
         </div>
-        <div className="landing-inner">
+        <div className="landing-inner" >
 
             <div className="landing-about">
-              <ul className='text-primary' style={{fontSize:"1.2rem"}}>
-                <li>-Add your watches into your showcase</li>
+
+              <ul className='text-primary text-about' >
+              <li style={{fontSize:"1.5rem", borderBottom:"1px solid white"}}>Cyclops is a virtual home for your watch collection</li>
+              <br/>
+
+                <li>Add your watches into your showcase</li>
                 <br/>
-                <li>-Customize your profile to be seen by other collectors</li>
+                <li>Customize your profile to share with other collectors</li>
+                <br/>
+                <li>Check out other collectors collections and discover their story</li>
+
               </ul>
             </div>
             <div className="vid-container">
-          <video width="100%" height="auto" autoplay muted loop id="vid">     
+          <video width="100%" height="auto" autoPlay  muted loop id="vid">     
           <source src="https://slate.textile.io/ipfs/bafybeibbkvprlad4pu5mmowmentuzl5gxyze44wyu352rpsb3youo3ikmu"></source>         
             </video>
             </div>

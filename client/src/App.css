@@ -19,7 +19,7 @@ body {
   font-size: 1rem;
 
   line-height: 1.6;
-  background-color: #222222;
+  background-color: #4F3130;
   color: #333;
 }
 
@@ -617,9 +617,7 @@ button {
     display: flex;
     flex-direction: column;
   }
-  .watch-page-info{
-    /* width:44vh; */
-  }
+
   .browse-container{
     display: flex;
     flex-direction: column;
@@ -637,9 +635,19 @@ button {
   }
   .landing-inner :nth-child(1) { order: 2; }
   .landing-inner :nth-child(2) { order: 1; }
-
+  .vid-container{
+    width:90vw;
+  }
+  .text-about{
+    font-size: 1rem;
+  }
+  .landing-about{
+    width: 80vw;
+  }
 }
-
+.vid-container{
+  /* box-shadow: 5px 10px 18px black; */
+}
 @media only screen and (max-width: 1280px) {
   .view-watch {
     display: flex;
