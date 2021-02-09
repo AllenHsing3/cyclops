@@ -5,6 +5,7 @@
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  font-family: 'Inter', sans-serif;
 }
 
 * {
@@ -353,7 +354,7 @@ button {
   width: 80%;
   margin: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -365,6 +366,12 @@ button {
   justify-content: space-around;
   align-items: center;
   padding-right: 3vh;
+  padding-top: 3vh;
+  width:40%;
+}
+.vid-container{
+  width:60%;
+  height:auto;
 }
 
 .auth {
@@ -376,7 +383,8 @@ button {
 
 
 .buttons {
-  margin-top: 50vh;
+  margin-top: 60vh;
+  justify-content: flex-end;
 }
 
 /* Profile Page */
@@ -623,6 +631,13 @@ button {
     max-width: 101vh;
     margin-top: 12vh;
   }
+  .landing-inner{
+    display: flex;
+    flex-direction: column;
+  }
+  .landing-inner :nth-child(1) { order: 2; }
+  .landing-inner :nth-child(2) { order: 1; }
+
 }
 
 @media only screen and (max-width: 1280px) {
@@ -642,4 +657,11 @@ button {
     max-width: 101vh;
     margin-top: 12vh;
   }
+  .landing-inner{
+    display: flex;
+    flex-direction: column;
+  }
+  .landing-inner :nth-child(1) { order: 2; }
+  .landing-inner :nth-child(2) { order: 1; }
+
 }
