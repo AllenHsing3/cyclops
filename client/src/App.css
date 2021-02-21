@@ -19,7 +19,9 @@ body {
   font-size: 1rem;
 
   line-height: 1.6;
-  background-color: #4F3130;
+  /* background-color: #4F3130; */
+    background-color: #222222;
+
   color: #333;
 }
 
@@ -40,7 +42,6 @@ img {
 .container {
   max-width: 12000px;
   margin: auto;
-  overflow: hidden;
   padding: 0 2rem;
 }
 
@@ -643,6 +644,11 @@ button {
   }
   .landing-about{
     width: 80vw;
+  }
+  .navbar {
+    margin: 1vh 4vh 1vh 2vh;
+    opacity: 0.9;
+    height: 10vh;
   }
 }
 .vid-container{
