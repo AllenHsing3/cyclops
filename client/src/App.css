@@ -322,6 +322,7 @@ button {
   margin: 3vh 0vh 3vh 3vh;
   opacity: 0.9;
   height: 10vh;
+  grid-gap: 1vh;
 }
 
 .navbar ul {

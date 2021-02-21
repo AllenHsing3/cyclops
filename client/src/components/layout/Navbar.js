@@ -7,15 +7,7 @@ import { logout } from "../../actions/auth";
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul className="navbar">
-      <li
-        // style={{
-        //   width: "10vh",
-        //   height: "auto",
-        //   position: "fixed",
-        //   marginTop: "2vh",
-        //   left:"1.5vh"
-        // }}
-      >
+      <li>
         <Link to="/user/dashboard">
           <svg
             width="36"
@@ -33,29 +25,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           </svg>
         </Link>
       </li>
-      <li
-        // style={{
-        //   width: "10vh",
-        //   height: "auto",
-        //   position: "fixed",
-        //   marginTop: "7vh",
-        //   left:"1.5vh"
-        // }}
-      >
+      <li>
         <Link to="/user/profiles">
         <i class="fas fa-users fa-2x"></i>
         </Link>
       </li>
-
-      <li
-        style={{
-          width: "10vh",
-          height: "auto",
-          position: "fixed",
-          marginTop: "13vh",
-          marginLeft:".3vh",
-          left:"1.5vh"
-        }}
+      <li className="logout"
       >
         <a href="/" onClick={logout}>
           <i className="fas fa-sign-out-alt fa-2x"></i>{" "}
@@ -67,14 +42,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   const guestLinks = (
     <ul className="navbar">
-      <li
-        // style={{
-        //   width: "10vh",
-        //   height: "auto",
-        //   position: "fixed",
-        //   marginTop: "2vh",
-        // }}
-      >
+      <li>
         <Link to="/">
           <svg
             width="36"
@@ -92,14 +60,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           </svg>
         </Link>
       </li>
-      <li
-        // style={{
-        //   width: "10vh",
-        //   height: "auto",
-        //   position: "fixed",
-        //   marginTop: "5.8vh",
-        // }}
-      >
+      <li>
         <Link to="/user/profiles">
         <i class="fas fa-users fa-2x"></i>
         </Link>
