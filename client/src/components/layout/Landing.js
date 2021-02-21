@@ -11,7 +11,7 @@ const Landing = ({ isAuthenticated }) => {
   // document.body.style.overflow = "hidden"
     return(
         <section className="landing">
-          <div className="landing-inner">
+          <div className="landing-inner" style={{marginBottom:'10vh'}}>
             <div className="buttons" style={{paddingTop:"3vh"}}>
               <Link to="/user/register" className="btn btn-light btn-pill">Sign Up</Link>
               <Link to="/user/login" className="btn btn-light btn-pill">Login</Link>
