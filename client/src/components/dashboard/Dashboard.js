@@ -19,8 +19,8 @@ const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
   const [watchSet, toggleWatchSet] = useState({
-    current: "text-primary",
-    previous: "text-secondary",
+    current: "selected-collection",
+    previous: "unselected-collection",
     displayPrevious: false,
   });
   // Set up bio edit pane on click
@@ -47,15 +47,15 @@ const Dashboard = ({
   const watchSetHelper = (e) => {
     if (e.currentTarget.id == "current") {
       toggleWatchSet({
-        current: "text-primary",
-        previous: "text-secondary",
+        current: "selected-collection",
+        previous: "unselected-collection",
         displayPrevious: false,
       });
     }
     if (e.currentTarget.id == "previous") {
       toggleWatchSet({
-        current: "text-secondary",
-        previous: "text-primary",
+        current: "unselected-collection",
+        previous: "selected-collection",
         displayPrevious: true,
       });
     }
@@ -98,20 +98,18 @@ const Dashboard = ({
             textAlign: "left",
             alignSelf: "center",
           }}
+          className="current-previous-btn-container"
         >
-          <div>
           <button
             id="current"
             onClick={(e) => watchSetHelper(e)}
             className="unstyleButton"
-            style={{ fontSize: "1.4rem" }}
           >
-            <p style={{ fontSize: "1.4rem" }} className={watchSet.current}>
-              Current
+            <p  className={watchSet.current}>
+              Collection
             </p>
           </button>
-          </div>
-          <div>
+
 
           <button
             id="previous"
@@ -119,12 +117,10 @@ const Dashboard = ({
             style={{ marginLeft: "1vh" }}
             className="unstyleButton"
           >
-            <p style={{ fontSize: "1.4rem" }} className={watchSet.previous}>
+            <p  className={watchSet.previous}>
               Previous
             </p>
           </button>
-          </div>
-
         </div>
         {profile !== null ? (
           <div className="profile-container">

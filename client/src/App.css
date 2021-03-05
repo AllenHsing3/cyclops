@@ -69,10 +69,23 @@ img {
 
 .text-primary {
   color: white;
-  font-size: 1.2rem;
+  font-size: 1rem;
+}
+.selected-collection {
+  color: white;
+  margin-bottom: 0vh;
+  font-size: 1rem;
+  height: 3.2vh;
+  border-bottom: 2px solid white;
 }
 .text-secondary {
   color: grey;
+}
+.unselected-collection {
+  color: grey;
+  height: 3.2vh;
+
+
 }
 .text-dark {
   color: var(--dark-color);
@@ -400,6 +413,13 @@ button {
   height: auto;
 }
 
+.current-previous-btn-container{
+  border-bottom: 1px solid grey;
+  width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Posts Page */
 .post-form .post-form-header {
   background: var(--primary-color);
@@ -495,17 +515,16 @@ button {
   flex-wrap: wrap;
   text-align: center;
   align-self: center;
-  max-width: 96vh;
-  justify-content: center;
-  border-top: 1px solid white;
+  width: 60vw;
+  justify-content: space-between;
 }
 
+.watch-card-container{
+  width: 31.5%;
+}
 .watch-card {
-  margin-left: 1vh;
-  margin-right: 1vh;
-  margin-top: 2vh;
-  width: 30vh;
-  height: 45vh;
+  margin-top: 3vh;
+  width:100%;
 }
 
 

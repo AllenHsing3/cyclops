@@ -59,42 +59,22 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               <p className="text-secondary">{profile.user.bio}</p>
             </div>
             <div
-              style={{
-                display: "flex",
-                textAlign: "left",
-                alignSelf: "center",
-              }}
+              className="current-previous-btn-container"
             >
-              <div>
-                <button
-                  id="current"
-                  onClick={(e) => watchSetHelper(e)}
-                  className="unstyleButton"
-                  style={{ fontSize: "1.4rem" }}
-                >
-                  <p
-                    style={{ fontSize: "1.4rem" }}
-                    className={watchSet.current}
-                  >
-                    Current
-                  </p>
-                </button>
-              </div>
-              <div>
-                <button
-                  id="previous"
-                  onClick={(e) => watchSetHelper(e)}
-                  style={{ marginLeft: "1vh" }}
-                  className="unstyleButton"
-                >
-                  <p
-                    style={{ fontSize: "1.4rem" }}
-                    className={watchSet.previous}
-                  >
-                    Previous
-                  </p>
-                </button>
-              </div>
+              <button
+                id="current"
+                onClick={(e) => watchSetHelper(e)}
+                className="unstyleButton"
+              >
+                <p className={watchSet.current}>Collection</p>
+              </button>
+              <button
+                id="previous"
+                onClick={(e) => watchSetHelper(e)}
+                className="unstyleButton"
+              >
+                <p className={watchSet.previous}>Previous</p>
+              </button>
             </div>
             {profile !== null ? (
               <div className="profile-container">

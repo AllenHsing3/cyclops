@@ -70,21 +70,14 @@ const WatchCard = ({ watch, edit }) => {
   };
 
   return (
-    <div style={{ width: "31vh", height: "45vh" }}>
+    <div className="watch-card-container">
       {displayForm && (
         <div ref={wrapperRef}>
           <EditWatch watch={watch} submitted={closeForm} />
         </div>
       )}
       <div className="watch-card">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            height:"40vh"
-          }}
-        >
+        <div>
           <img
             // className="profile-img"
             style={{
@@ -107,28 +100,29 @@ const WatchCard = ({ watch, edit }) => {
             }}
           />
         </div>
-        <div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           <p
             className="text-primary"
             style={{
               textAlign: "left",
-              marginTop: "1vh",
-              marginBottom: "2vh",
+              marginTop: "2vh",
               wordWrap: "break-word",
-              justifySelf: "flex-end",
             }}
           >
             {name}{" "}
-            {edit === true ? (
-              <span
-                style={{ color: "blue" }}
-                onClick={() => toggleDisplayForm(true)}
-                ref={wrapperRef}
-              >
-                <i className="fas fa-edit"></i>
-              </span>
-            ) : null}
           </p>
+          {edit === true ? (
+            <div
+              style={{
+                color: "gray",
+                marginTop: "2vh",
+              }}
+              onClick={() => toggleDisplayForm(true)}
+              ref={wrapperRef}
+            >
+              <i className="fas fa-edit"></i>
+            </div>
+          ) : null}
         </div>
 
         <Modal>{modal.modalContent}</Modal>
